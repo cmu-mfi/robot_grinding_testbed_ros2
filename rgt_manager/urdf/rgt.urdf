@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<robot name="rgt">
+  <link name="world" />
+  <!-- ur20_tc_master -->
+  <link name="ur20_tc_master">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/ur20_tc_master.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="ur20_tc_master" type="fixed">
+    <parent link="world" />
+    <child link="ur20_tc_master" />
+  </joint>
+  <!-- nex10_tc_master -->
+  <link name="nex10_tc_master">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/nex10_tc_master.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="nex10_tc_master" type="fixed">
+    <parent link="world" />
+    <child link="nex10_tc_master" />
+  </joint>
+  <!-- nex10_tray_1 -->
+  <link name="nex10_tray_1">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/tray.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="nex10_tray_1" type="fixed">
+    <parent link="world" />
+    <child link="nex10_tray_1" />
+  </joint>
+  <!-- nex10_tray_2 -->
+  <link name="nex10_tray_2">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/tray.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="nex10_tray_2" type="fixed">
+    <parent link="world" />
+    <child link="nex10_tray_2" />
+  </joint>
+  <!-- ur20_tray_1 -->
+  <link name="ur20_tray_1">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/tray.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="ur20_tray_1" type="fixed">
+    <parent link="world" />
+    <child link="ur20_tray_1" />
+  </joint>
+  <!-- ur20_tray_2 -->
+  <link name="ur20_tray_2">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/tray.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="ur20_tray_2" type="fixed">
+    <parent link="world" />
+    <child link="ur20_tray_2" />
+  </joint>
+  <!-- sander -->
+  <link name="sander">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/sander.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="sander" type="fixed">
+    <parent link="world" />
+    <child link="sander" />
+  </joint>
+  <!-- grinder -->
+  <link name="grinder">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/grinder.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="grinder" type="fixed">
+    <parent link="world" />
+    <child link="grinder" />
+  </joint>
+</robot>
