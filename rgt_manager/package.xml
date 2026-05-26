@@ -3,16 +3,15 @@
 <package format="3">
   <name>rgt_manager</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="alexander@minor.pw">alex</maintainer>
+  <description>rgt_manager and scripts</description>
+  <maintainer email="alexander@minor.pw">Alexander Minor</maintainer>
   <license>BSD-3-Clause</license>
 
-  <test_depend>ament_copyright</test_depend>
-  <test_depend>ament_flake8</test_depend>
-  <test_depend>ament_pep257</test_depend>
-  <test_depend>python3-pytest</test_depend>
+  <depend>ament_cmake</depend>
+  <depend>ament_cmake_python</depend>
+  <depend>rclpy</depend>
 
   <export>
-    <build_type>ament_python</build_type>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
