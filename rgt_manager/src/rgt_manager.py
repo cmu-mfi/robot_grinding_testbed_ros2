@@ -104,26 +104,29 @@ class RgtManager(Node):
             self.publish_static_transform(parent_frame, child_frame, transform)
             # publish tool0 transforms
             parent_frame = robot_name + "_tool0"
-            for frame_name, transform in robot_config["tool0_transforms"].items():
-                self.publish_static_transform(parent_frame, robot_name + "_" + frame_name, transform)
+            if "tool0_transforms" in robot_config:
+                for frame_name, transform in robot_config["tool0_transforms"].items():
+                    self.publish_static_transform(parent_frame, robot_name + "_" + frame_name, transform)
 
         # trays
         for tray_name, tray_config in self.config["trays"].items():
             # publish references
-            for robot_name, transform in tray_config["references"].items():
-                parent_frame = robot_name + "_mount_point"
-                child_frame = robot_name + "_" + tray_name
-                self.publish_static_transform(parent_frame, child_frame, transform)
-                # publish tc_master
-                parent_frame = child_frame
-                child_frame = robot_name + "_" + tray_name + "_tc_connector"
-                self.publish_static_transform(parent_frame, child_frame, {"x": -0.046, "z": -0.0066})
+            if "references" in tray_config:
+                for robot_name, transform in tray_config["references"].items():
+                    parent_frame = robot_name + "_mount_point"
+                    child_frame = robot_name + "_" + tray_name
+                    self.publish_static_transform(parent_frame, child_frame, transform)
+                    # publish tc_master
+                    parent_frame = child_frame
+                    child_frame = robot_name + "_" + tray_name + "_tc_connector"
+                    self.publish_static_transform(parent_frame, child_frame, {"x": -0.046, "z": -0.0066})
 
         # tools
         for tool_name, tool_config in self.config["tools"].items():
             # publish static child transform
-            for child_frame, transform in tool_config["child_transforms"].items():
-                self.publish_static_transform(tool_name, child_frame, transform)
+            if "child_transforms" in tool_config:
+                for child_frame, transform in tool_config["child_transforms"].items():
+                    self.publish_static_transform(tool_name, child_frame, transform)
 
     def load_initial_tool_config(self):
         # tools
