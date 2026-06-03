@@ -49,6 +49,18 @@
     <parent link="world" />
     <child link="nex10_tray_2" />
   </joint>
+  <!-- nex10_tray_3 -->
+  <link name="nex10_tray_3">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/tray.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="nex10_tray_3" type="fixed">
+    <parent link="world" />
+    <child link="nex10_tray_3" />
+  </joint>
   <!-- ur20_tray_1 -->
   <link name="ur20_tray_1">
     <visual>
@@ -73,6 +85,18 @@
     <parent link="world" />
     <child link="ur20_tray_2" />
   </joint>
+  <!-- ur20_tray_3 -->
+  <link name="ur20_tray_3">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/tray.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="ur20_tray_3" type="fixed">
+    <parent link="world" />
+    <child link="ur20_tray_3" />
+  </joint>
   <!-- sander -->
   <link name="sander">
     <visual>
@@ -96,5 +120,17 @@
   <joint name="grinder" type="fixed">
     <parent link="world" />
     <child link="grinder" />
+  </joint>
+  <!-- gelsight_vision -->
+  <link name="gelsight_vision">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/gelsight_vision.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="gelsight_vision" type="fixed">
+    <parent link="world" />
+    <child link="gelsight_vision" />
   </joint>
 </robot>
