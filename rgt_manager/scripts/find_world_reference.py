@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 import rclpy
-import math
 from rclpy.node import Node
-from geometry_msgs.msg import TwistStamped, Transform, Vector3, TransformStamped, Quaternion
+from geometry_msgs.msg import TwistStamped 
 from moveit_msgs.srv import ServoCommandType
 import pyspacemouse
 import time
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
 import threading
-from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster
-from tf_transformations import quaternion_from_euler
+import numpy as np
 
 class ProbeNode(Node):
     def __init__(self):
@@ -31,7 +29,8 @@ class ProbeNode(Node):
 
         # Enable Servo
         self.servo_client = self.create_client(ServoCommandType, self.ns + '/servo_node/switch_command_type')
-        while not self.servo_client.wait_for_service(timeout_sec=1.0): pass
+        while not self.servo_client.wait_for_service(timeout_sec=1.0): 
+            self.get_logger().info("Waiting for service: " + self.ns + '/servo_node/switch_command_type')
         req = ServoCommandType.Request()
         req.command_type = ServoCommandType.Request.TWIST
         future = self.servo_client.call_async(req)
@@ -62,6 +61,8 @@ class ProbeNode(Node):
             exit()
         self.spacemouse_loop = self.create_timer((1 / 200), self.spacemouse_loop_callback)
 
+        self.get_logger().info("Navigating with spacemouse! Press left button to change speed and right button to print transform!")
+
     #### Spacemouse
     def spacemouse_loop_callback(self):
         self.state = pyspacemouse.read()
@@ -87,6 +88,8 @@ class ProbeNode(Node):
                 # Reset the smoothing history so it doesn't jerk on the next movement
                 self.smoothed_v = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] 
                 return
+            if self.skipped_ts > 100:
+                self.skipped_ts = 100
                 
             self.previous_t = self.current_t
             
@@ -169,28 +172,35 @@ def main(args=None):
             if mode == 1:
                 node.speed = 0.04
                 node.turn = 0.12
+            if mode == 2:
+                node.speed = 0.04
+                node.turn = 0.00
             node.navigate()
             if node.left_button_pressed:
                 node.left_button_pressed = False
-                mode = not mode
-                if mode:
-                    node.get_logger().info("Navigating Mode: Slow")
-                else:
-                    node.get_logger().info("Navigating Mode: Fast")
+                mode += 1
+                if mode == 3:
+                    mode = 0
+                if mode == 0:
+                    node.get_logger().info("Navigation Mode: Fast")
+                elif mode == 1:
+                    node.get_logger().info("Navigation Mode: Slow")
+                elif mode == 2:
+                    node.get_logger().info("Navigation Mode: Slow and Locked")
             if node.right_button_pressed:
                 node.right_button_pressed = False
                 tf = node.get_current_tf(node.ns + "_calibration_tool", node.ns + "_base_link")
                 print("Obtaining transform...")
                 if tf != None:
                     print(f'  {node.ns}:')
-                    print("    mount_point:")
-                    print("       x: "  + str(tf.translation.x))
-                    print("       y: "  + str(tf.translation.y))
-                    print("       z: "  + str(tf.translation.z))
-                    print("       ax: " + str(tf.rotation.x))
-                    print("       ay: " + str(tf.rotation.y))
-                    print("       az: " + str(tf.rotation.z))
-                    print("       w: "  + str(tf.rotation.w))
+                    print(f'    mount_point:')
+                    print(f'      x: {np.round(tf.translation.x, 8)}')
+                    print(f'      y: {np.round(tf.translation.y, 8)}')
+                    print(f'      z: {np.round(tf.translation.z, 8)}')
+                    print(f'      ax: {np.round(tf.rotation.x, 8)}')
+                    print(f'      ay: {np.round(tf.rotation.y, 8)}')
+                    print(f'      az: {np.round(tf.rotation.z, 8)}')
+                    print(f'      w: {np.round(tf.rotation.w, 8)}')
             time.sleep(0.01)
 
     except KeyboardInterrupt:

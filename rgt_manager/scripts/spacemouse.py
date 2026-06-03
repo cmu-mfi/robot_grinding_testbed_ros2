@@ -26,7 +26,8 @@ class SpaceMouseNode(Node):
 
         # Enable Servo
         self.servo_client = self.create_client(ServoCommandType, self.ns + '/servo_node/switch_command_type')
-        while not self.servo_client.wait_for_service(timeout_sec=1.0): pass
+        while not self.servo_client.wait_for_service(timeout_sec=1.0): 
+            self.get_logger().info("Waiting for service: " + self.ns + '/servo_node/switch_command_type')
         req = ServoCommandType.Request()
         req.command_type = ServoCommandType.Request.TWIST
         future = self.servo_client.call_async(req)
@@ -52,6 +53,8 @@ class SpaceMouseNode(Node):
             self.get_logger().error("Failed to connect to Space Mouse!")
             exit()
         self.spacemouse_loop = self.create_timer((1 / 200), self.spacemouse_loop_callback)
+
+        self.get_logger().info("Navigating with spacemouse! Press left button to change speed and right button to print transform!")
 
     #### Spacemouse
     def spacemouse_loop_callback(self):
@@ -155,9 +158,17 @@ def main(args=None):
             if node.left_button_pressed:
                 node.left_button_pressed = False
                 slow = not slow
+                if slow:
+                    node.get_logger().info("Navigation Mode: Slow")
+                else:
+                    node.get_logger().info("Navigation Mode: Fast")
             if node.right_button_pressed:
                 node.right_button_pressed = False
                 locked = not locked
+                if locked:
+                    node.get_logger().info("Navigation Mode: 4DOF")
+                else:
+                    node.get_logger().info("Navigation Mode: 6DOF")
             time.sleep(0.01)
     except KeyboardInterrupt:
         print('Keyboard interrupt, shutting down.')
