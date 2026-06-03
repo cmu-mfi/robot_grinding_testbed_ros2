@@ -16,6 +16,11 @@ install(PROGRAMS
   RENAME spacemouse
 )
 install(PROGRAMS
+  scripts/find_world_reference.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME find_world_reference
+)
+install(PROGRAMS
   scripts/find_tray_reference.py
   DESTINATION lib/${PROJECT_NAME}
   RENAME find_tray_reference
