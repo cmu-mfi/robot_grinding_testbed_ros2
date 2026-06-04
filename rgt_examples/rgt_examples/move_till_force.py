@@ -2,16 +2,8 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import TwistStamped, WrenchStamped
 from moveit_msgs.srv import ServoCommandType
-import pyspacemouse
 import time
-from tf2_ros.buffer import Buffer
-from tf2_ros.transform_listener import TransformListener
-from geometry_msgs.msg import TransformStamped
-from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster
-import tf_transformations
 import threading
-import numpy as np
-import tf_transformations
 
 class MoveTillForce(Node):
     def __init__(self):
@@ -69,12 +61,7 @@ class MoveTillForce(Node):
     #### Force Sensor
     def force_callback(self, msg: WrenchStamped):
         force = 0
-        # force += abs(msg.wrench.force.x)
-        # force += abs(msg.wrench.force.y)
         force += abs(msg.wrench.force.z)
-        # force += abs(msg.wrench.torque.x)
-        # force += abs(msg.wrench.torque.y)
-        # force += abs(msg.wrench.torque.z)
         self.force = abs(abs(force) - abs(self.offset))
     def calibrate_sensor(self):
         self.get_logger().info("Starting sensor calibration")
@@ -99,7 +86,7 @@ def main(args=None):
         node.calibrate_sensor()
         while True:
             node.move_z(0.02)
-            # print(node.force)
+            print(node.force)
             if node.force >= 4:
                 node.stop()
                 return
