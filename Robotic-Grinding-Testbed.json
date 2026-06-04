@@ -1,0 +1,887 @@
+{
+  "configById": {
+    "3D!4eotes4": {
+      "cameraState": {
+        "distance": 3.8742296891646637,
+        "perspective": true,
+        "phi": 40.28687367640009,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0.2827568763663403,
+          -0.00855619125465003,
+          2.2744737580059975e-17
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": -25.440542973065778,
+        "fovy": 45,
+        "near": 0.1,
+        "far": 5000
+      },
+      "followMode": "follow-none",
+      "scene": {
+        "transforms": {
+          "showLabel": false,
+          "axisSize": 0.1,
+          "lineWidth": 0,
+          "visible": true,
+          "offsetReferenceFrame": "parent"
+        },
+        "meshUpAxis": "z_up",
+        "ignoreColladaUpAxis": false
+      },
+      "transforms": {
+        "frame:ft_frame": {
+          "visible": false
+        },
+        "frame:flange": {
+          "visible": false
+        },
+        "frame:wrist_3_link": {
+          "visible": false
+        },
+        "frame:wrist_2_link": {
+          "visible": false
+        },
+        "frame:wrist_1_link": {
+          "visible": false
+        },
+        "frame:forearm_link": {
+          "visible": false
+        },
+        "frame:upper_arm_link": {
+          "visible": false
+        },
+        "frame:shoulder_link": {
+          "visible": false
+        },
+        "frame:base_link_inertia": {
+          "visible": false
+        },
+        "frame:tool0_controller": {
+          "visible": false
+        },
+        "frame:base": {
+          "visible": false
+        },
+        "frame:base_link": {
+          "visible": false
+        },
+        "frame:world": {
+          "visible": false
+        },
+        "frame:tool0": {
+          "visible": false
+        },
+        "frame:bed_frame": {
+          "visible": true
+        },
+        "frame:ref": {
+          "visible": true
+        },
+        "frame:nex10_link_0": {
+          "visible": false
+        },
+        "frame:nex10_link_1": {
+          "visible": false
+        },
+        "frame:nex10_link_2": {
+          "visible": false
+        },
+        "frame:nex10_link_3": {
+          "visible": false
+        },
+        "frame:nex10_link_4": {
+          "visible": false
+        },
+        "frame:nex10_link_5": {
+          "visible": false
+        },
+        "frame:nex10_link_6": {
+          "visible": false
+        },
+        "frame:nex10_flange": {
+          "visible": false
+        },
+        "frame:nex10_tool0": {
+          "visible": false
+        },
+        "frame:link_0": {
+          "visible": false
+        },
+        "frame:link_1": {
+          "visible": false
+        },
+        "frame:link_2": {
+          "visible": false
+        },
+        "frame:link_3": {
+          "visible": false
+        },
+        "frame:link_4": {
+          "visible": false
+        },
+        "frame:link_5": {
+          "visible": false
+        },
+        "frame:link_6": {
+          "visible": false
+        },
+        "frame:nex10_base_link": {
+          "visible": false
+        },
+        "frame:ur20_base_link": {
+          "visible": false
+        },
+        "frame:ur20_base": {
+          "visible": false
+        },
+        "frame:ur20_base_link_inertia": {
+          "visible": false
+        },
+        "frame:ur20_shoulder_link": {
+          "visible": false
+        },
+        "frame:ur20_upper_arm_link": {
+          "visible": false
+        },
+        "frame:ur20_forearm_link": {
+          "visible": false
+        },
+        "frame:ur20_wrist_1_link": {
+          "visible": false
+        },
+        "frame:ur20_wrist_2_link": {
+          "visible": false
+        },
+        "frame:ur20_wrist_3_link": {
+          "visible": false
+        },
+        "frame:ur20_flange": {
+          "visible": false
+        },
+        "frame:ur20_tool0": {
+          "visible": false
+        },
+        "frame:ur20_ft_frame": {
+          "visible": false
+        },
+        "frame:nex11_tool0": {
+          "visible": false
+        },
+        "frame:nex11_flange": {
+          "visible": false
+        },
+        "frame:nex11_link_6": {
+          "visible": false
+        },
+        "frame:nex11_link_5": {
+          "visible": false
+        },
+        "frame:nex11_link_4": {
+          "visible": false
+        },
+        "frame:nex11_link_3": {
+          "visible": false
+        },
+        "frame:nex11_link_2": {
+          "visible": false
+        },
+        "frame:nex11_link_1": {
+          "visible": false
+        },
+        "frame:nex11_link_0": {
+          "visible": false
+        },
+        "frame:nex11_base_link": {
+          "visible": false
+        },
+        "frame:ur20_probing_point_1": {
+          "visible": false
+        },
+        "frame:ur20_probing_point_2": {
+          "visible": false
+        },
+        "frame:ur20_probing_point_3": {
+          "visible": false
+        },
+        "frame:ur20_probing_point_4": {
+          "visible": false
+        },
+        "frame:ur20_probing_point_5": {
+          "visible": false
+        },
+        "frame:ur20_probing_point_6": {
+          "visible": false
+        },
+        "frame:ur20_probing_point_corner": {
+          "visible": false
+        },
+        "frame:ur20_probing_point_center": {
+          "visible": false
+        },
+        "frame:ur20_probe": {
+          "visible": true
+        },
+        "frame:tc_1_reference": {
+          "visible": false
+        },
+        "frame:ur20_bottom_probe": {
+          "visible": false
+        },
+        "frame:ur20_side_probe": {
+          "visible": false
+        },
+        "frame:tool_changer_reference": {
+          "visible": false
+        },
+        "frame:tc_2_reference": {
+          "visible": false
+        },
+        "frame:table_center": {
+          "visible": false
+        },
+        "frame:ft_sensor": {
+          "visible": false
+        },
+        "frame:nex10_ft_sensor": {
+          "visible": false
+        },
+        "frame:nex10_bottom_probe": {
+          "visible": false
+        },
+        "frame:nex10_tc_2_reference": {
+          "visible": false
+        },
+        "frame:nex10_side_probe": {
+          "visible": false
+        },
+        "frame:nex10_probing_point_corner": {
+          "visible": false
+        },
+        "frame:nex10_probing_point_center": {
+          "visible": false
+        },
+        "frame:nex10_tc_master_reference": {
+          "visible": true
+        },
+        "frame:cam_watch_link": {
+          "visible": false
+        },
+        "frame:cam_watch_aligned_depth_to_infra1_frame": {
+          "visible": false
+        },
+        "frame:cam_watch_infra1_optical_frame": {
+          "visible": false
+        },
+        "frame:cam_watch_color_frame": {
+          "visible": false
+        },
+        "frame:cam_watch_color_optical_frame": {
+          "visible": false
+        },
+        "frame:cam_watch_infra1_frame": {
+          "visible": false
+        },
+        "frame:cam_watch_infra2_frame": {
+          "visible": false
+        },
+        "frame:cam_watch_infra2_optical_frame": {
+          "visible": false
+        },
+        "frame:ur20_tc_2_reference": {
+          "visible": false
+        },
+        "frame:ur20_tc_1_reference": {
+          "visible": false
+        },
+        "frame:ur20_tc_hook": {
+          "visible": false
+        },
+        "frame:test": {
+          "visible": false
+        },
+        "frame:nex10_tc_hook": {
+          "visible": false
+        },
+        "frame:nex10_tc_1_reference": {
+          "visible": false
+        },
+        "frame:panda_link0": {
+          "visible": true
+        },
+        "frame:link_7": {
+          "visible": false
+        },
+        "frame:link_8": {
+          "visible": false
+        },
+        "frame:panda_base_link": {
+          "visible": false
+        },
+        "frame:panda_link_0": {
+          "visible": false
+        },
+        "frame:panda_link_1": {
+          "visible": false
+        },
+        "frame:panda_link_2": {
+          "visible": false
+        },
+        "frame:panda_link_3": {
+          "visible": false
+        },
+        "frame:panda_link_4": {
+          "visible": false
+        },
+        "frame:panda_link_5": {
+          "visible": false
+        },
+        "frame:panda_link_6": {
+          "visible": false
+        },
+        "frame:panda_link_7": {
+          "visible": false
+        },
+        "frame:panda_link_8": {
+          "visible": false
+        },
+        "frame:panda_flange": {
+          "visible": false
+        },
+        "frame:panda_tool0": {
+          "visible": false
+        },
+        "frame:nex10_tc_master": {
+          "visible": false
+        },
+        "frame:tc_tray_1_connector": {
+          "visible": false
+        },
+        "frame:sander": {
+          "visible": false
+        },
+        "frame:tc_tray_2_connector": {
+          "visible": false
+        },
+        "frame:grinder": {
+          "visible": false
+        },
+        "frame:tc_tray_1": {
+          "visible": false
+        },
+        "frame:tc_tray_2": {
+          "visible": false
+        },
+        "frame:ur20_tc_master": {
+          "visible": false
+        },
+        "frame:nex10_mount_point": {
+          "visible": false
+        },
+        "frame:ur20_mount_point": {
+          "visible": false
+        },
+        "frame:sander_tooltip": {
+          "visible": false
+        },
+        "frame:nex10_tc_connector": {
+          "visible": false
+        },
+        "frame:nex10_tray_1": {
+          "visible": false
+        },
+        "frame:nex10_tray_1_tc_connector": {
+          "visible": false
+        },
+        "frame:nex10_tray_2": {
+          "visible": false
+        },
+        "frame:nex10_tray_2_tc_connector": {
+          "visible": false
+        },
+        "frame:ur20_tc_connector": {
+          "visible": false
+        },
+        "frame:ur20_tray_1": {
+          "visible": false
+        },
+        "frame:ur20_tray_1_tc_connector": {
+          "visible": false
+        },
+        "frame:ur20_tray_2": {
+          "visible": false
+        },
+        "frame:ur20_tray_2_tc_connector": {
+          "visible": false
+        },
+        "frame:grinder_tooltip": {
+          "visible": false
+        },
+        "frame:follower_reference": {
+          "visible": true
+        },
+        "frame:panda_mount_point": {
+          "visible": false
+        },
+        "frame:ur20_space_panda_reference": {
+          "visible": false
+        },
+        "frame:panda_space_panda_reference": {
+          "visible": true
+        },
+        "frame:cam_watch_depth_frame": {
+          "visible": false
+        },
+        "frame:cam_watch_depth_optical_frame": {
+          "visible": false
+        },
+        "frame:ur20_calibration_tool": {
+          "visible": false
+        },
+        "frame:ur20_tray_3": {
+          "visible": false
+        },
+        "frame:ur20_tray_3_tc_connector": {
+          "visible": false
+        },
+        "frame:gelsight_vision": {
+          "visible": false
+        },
+        "frame:gelsight_tooltip": {
+          "visible": false
+        },
+        "frame:camera_focus": {
+          "visible": false
+        },
+        "frame:nex10_tray_3": {
+          "visible": false
+        },
+        "frame:nex10_tray_3_tc_connector": {
+          "visible": false
+        },
+        "frame:nex10_calibration_tool": {
+          "visible": false
+        }
+      },
+      "topics": {
+        "/robot_description": {
+          "visible": false,
+          "displayMode": "visual"
+        },
+        "/move_base_simple/goal": {
+          "visible": false
+        },
+        "/tcp_pose_broadcaster/pose": {
+          "visible": false
+        },
+        "/real_robot/servo_node/pose_target_cmds": {
+          "visible": false
+        },
+        "/real_robot/display_contacts": {
+          "visible": true
+        },
+        "/cam_watch/infra1/camera_info": {
+          "visible": false
+        },
+        "/cam_watch/color/camera_info": {
+          "visible": false
+        }
+      },
+      "layers": {
+        "grid": {
+          "visible": true,
+          "drawBehind": true,
+          "label": "Grid",
+          "instanceId": "d841e21c-4b58-4174-aaa2-9918e4447b51",
+          "layerId": "foxglove.Grid",
+          "size": 10,
+          "lineWidth": 0.2,
+          "color": "#a9a9a9ff",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "divisions": 50
+        },
+        "b2dc9104-91d5-4a57-b2e7-21107517740d": {
+          "controlMode": "transforms",
+          "jointStatesTopic": "/nex10/joint_states",
+          "displayMode": "visual",
+          "showAxis": false,
+          "axisScale": 1,
+          "showOutlines": true,
+          "opacity": 1,
+          "visible": true,
+          "instanceId": "b2dc9104-91d5-4a57-b2e7-21107517740d",
+          "layerId": "foxglove.Urdf",
+          "label": "NEX10",
+          "sourceType": "topic",
+          "url": "",
+          "filePath": "",
+          "parameter": "",
+          "topic": "/nex10/robot_description",
+          "framePrefix": "",
+          "order": 1
+        },
+        "34fb8ac0-7bd1-4ad8-91e9-3e8e24e3948f": {
+          "controlMode": "transforms",
+          "jointStatesTopic": "",
+          "displayMode": "visual",
+          "showAxis": false,
+          "axisScale": 1,
+          "showOutlines": false,
+          "opacity": 1,
+          "visible": true,
+          "instanceId": "34fb8ac0-7bd1-4ad8-91e9-3e8e24e3948f",
+          "layerId": "foxglove.Urdf",
+          "label": "UR20",
+          "sourceType": "topic",
+          "url": "",
+          "filePath": "",
+          "parameter": "",
+          "topic": "/ur20/robot_description",
+          "framePrefix": "",
+          "order": 2,
+          "links": {
+            "ur20_wrist_3_link": {
+              "visible": true
+            }
+          }
+        },
+        "bf6786a3-86c7-46a2-b8ca-d17ef0703372": {
+          "controlMode": "transforms",
+          "jointStatesTopic": "",
+          "displayMode": "visual",
+          "fallbackColor": "#ffffff",
+          "showAxis": false,
+          "axisScale": 1,
+          "showOutlines": true,
+          "opacity": 1,
+          "visible": false,
+          "instanceId": "bf6786a3-86c7-46a2-b8ca-d17ef0703372",
+          "layerId": "foxglove.Urdf",
+          "label": "Panda",
+          "sourceType": "topic",
+          "url": "",
+          "filePath": "",
+          "parameter": "",
+          "topic": "/panda/robot_description",
+          "framePrefix": "",
+          "order": 3
+        },
+        "850b3fa4-f6b4-4ad8-ae4c-2dff11304aa3": {
+          "controlMode": "transforms",
+          "jointStatesTopic": "",
+          "displayMode": "auto",
+          "fallbackColor": "#ffffff",
+          "showAxis": false,
+          "axisScale": 1,
+          "showOutlines": false,
+          "opacity": 1,
+          "visible": true,
+          "instanceId": "850b3fa4-f6b4-4ad8-ae4c-2dff11304aa3",
+          "layerId": "foxglove.Urdf",
+          "label": "RGT",
+          "sourceType": "topic",
+          "url": "",
+          "filePath": "",
+          "parameter": "",
+          "topic": "/rgt/robot_description",
+          "framePrefix": "",
+          "order": 4,
+          "links": {
+            "nex10_tray_1": {
+              "visible": false
+            },
+            "nex10_tray_2": {
+              "visible": false
+            },
+            "ur20_tray_1": {
+              "visible": true
+            },
+            "ur20_tray_2": {
+              "visible": true
+            },
+            "grinder": {
+              "visible": true
+            },
+            "sander": {
+              "visible": true
+            },
+            "nex10_tray_3": {
+              "visible": false
+            }
+          }
+        }
+      },
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {},
+      "synchronize": false,
+      "followTf": "world",
+      "fixedFrame": "world"
+    },
+    "Plot!267mjd7": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.z",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "7b8b8ec0-7816-454c-8db8-ccbb0e96493e",
+          "label": "filtered"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/force_torque_sensor_broadcaster/wrench.wrench.force.z",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "50d9b850-d6e0-40dc-b728-2a151a3a6cab",
+          "label": "unfiltered"
+        }
+      ]
+    },
+    "Plot!41cbuv0": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.x",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "7b8b8ec0-7816-454c-8db8-ccbb0e96493e",
+          "label": "x"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.y",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "942a287e-5ca1-40b4-a937-9243dff75333",
+          "label": "y"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "e78fa195-22e4-435d-a11c-0e6af2abba56",
+          "label": "z"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.torque.x",
+          "enabled": true,
+          "color": "#5cd6a9",
+          "id": "bfa6ea8e-37ac-4eae-a781-78f38a54ce57",
+          "label": "ax"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.torque.y",
+          "enabled": true,
+          "color": "#61cbff",
+          "id": "8937f88b-e4a0-4cc1-ba4a-acfa079f08c8",
+          "label": "ay"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.torque.z",
+          "enabled": true,
+          "color": "#a395e2",
+          "id": "c61ace23-94dd-4d86-b1ed-c142c5158f46",
+          "label": "az"
+        }
+      ]
+    },
+    "Plot!3h9pesj": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/franka_robot_state_broadcaster/robot_state/wrench.wrench.force.x",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "07233b43-a1cb-4a48-b19e-899da010d74b",
+          "label": "x"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/franka_robot_state_broadcaster/robot_state/wrench.wrench.force.y",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "ae6497fc-c479-44ac-927a-297d7b1e04f8",
+          "label": "y"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/franka_robot_state_broadcaster/robot_state/wrench.wrench.force.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "e94b720c-e70a-4669-bd56-18b7f31f6e0c",
+          "label": "z"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/franka_robot_state_broadcaster/robot_state/wrench.wrench.torque.x",
+          "enabled": true,
+          "color": "#5cd6a9",
+          "id": "fdad07b8-6409-40b8-8ff6-01f84acd4c7a",
+          "label": "ax"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/franka_robot_state_broadcaster/robot_state/wrench.wrench.torque.y",
+          "enabled": true,
+          "color": "#61cbff",
+          "id": "c8822ef7-b6d2-4d4d-90f6-8b1d7a0b96ef",
+          "label": "ay"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/franka_robot_state_broadcaster/robot_state/wrench.wrench.torque.z",
+          "enabled": true,
+          "color": "#a395e2",
+          "id": "4e7c4ccc-66ff-445a-bdff-06f60fa79515",
+          "label": "az"
+        }
+      ]
+    },
+    "Plot!2yoghdm": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/controller_manager/introspection_data/full.statistics[:]{name==\"state_interface.nex10_joint_3/position\"}.value",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "da707373-b596-4e50-a9e5-97e425639c79",
+          "label": "state"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/controller_manager/introspection_data/full.statistics[:]{name==\"command_interface.nex10_joint_3/position\"}.value",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "beee2492-4a01-4b32-8342-c0c1e26de7cc",
+          "label": "command"
+        }
+      ]
+    },
+    "RawMessages!2k5l7ql": {
+      "topicPath": "/ur20/controller_manager/introspection_data/full.statistics",
+      "defaultExpanded": true,
+      "expansion": {
+        "1": "c"
+      }
+    },
+    "Image!i9vkxd": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 60,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "synchronize": false,
+      "imageMode": {
+        "imageTopic": "/thermal/image_raw"
+      }
+    },
+    "TransformTree!2w2ihum": {},
+    "Tab!1app0q": {
+      "activeTabIdx": 0,
+      "tabs": [
+        {
+          "title": "3D",
+          "layout": "3D!4eotes4"
+        },
+        {
+          "title": "ur20_force",
+          "layout": "Plot!267mjd7"
+        },
+        {
+          "title": "nex10_force",
+          "layout": "Plot!41cbuv0"
+        },
+        {
+          "title": "franka_force",
+          "layout": "Plot!3h9pesj"
+        },
+        {
+          "title": "error",
+          "layout": "Plot!2yoghdm"
+        },
+        {
+          "title": "controller debug",
+          "layout": "RawMessages!2k5l7ql"
+        },
+        {
+          "title": "thermal",
+          "layout": "Image!i9vkxd"
+        },
+        {
+          "title": "transforms",
+          "layout": "TransformTree!2w2ihum"
+        }
+      ]
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": "Tab!1app0q"
+}
