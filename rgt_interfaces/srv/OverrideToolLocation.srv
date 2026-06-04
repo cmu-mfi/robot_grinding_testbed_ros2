@@ -1,0 +1,4 @@
+string tool
+string location
+---
+bool success

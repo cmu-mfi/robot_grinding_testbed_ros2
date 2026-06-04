@@ -16,6 +16,7 @@ find_package(std_msgs REQUIRED)
 set(srv_files
   "srv/TakeTool.srv"
   "srv/ReturnTool.srv"
+  "srv/OverrideToolLocation.srv"
 )
 
 # Generate the interfaces

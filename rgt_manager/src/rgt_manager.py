@@ -17,7 +17,7 @@ from rclpy.callback_groups import ReentrantCallbackGroup
 from robot_manager_interfaces.action import PoseGoal
 from robot_manager_interfaces.srv import Home
 from geometry_msgs.msg import Point, Quaternion
-from rgt_interfaces.srv import TakeTool, ReturnTool
+from rgt_interfaces.srv import TakeTool, ReturnTool, OverrideToolLocation
 
 class RgtManager(Node):
     def __init__(self):
@@ -72,6 +72,12 @@ class RgtManager(Node):
             ReturnTool,
             '/rgt_manager/return_tool',
             self.return_tool_callback,
+            callback_group=self.cb_group
+        )
+        self.override_tool_location = self.create_service(
+            OverrideToolLocation,
+            '/rgt_manager/override_tool_location',
+            self.override_tool_location_callback,
             callback_group=self.cb_group
         )
 
@@ -321,6 +327,38 @@ class RgtManager(Node):
         
         response.success = True
         self.get_logger().info(f"Successfully finished return_tool operation")
+        return response
+
+    async def override_tool_location_callback(self, request, response):
+        self.get_logger().info(f"Received override_tool_location request for tool: {request.tool} and location: {request.location}")
+
+        # Check whether tool is recognized
+        if request.tool not in self.config["tools"]:
+            self.get_logger().error(f"Tool '{request.tool}' is not recognized in the configuration.")
+            response.success = False
+            return response
+
+        # If request.location = tray: attach tool to tray from config
+        if request.location == "tray":
+            tool_config = self.config["tools"][request.tool]
+            robot_name = tool_config["robot_name"]
+            tray_name = tool_config["tray_name"]
+            self.tools[request.tool] = robot_name + "_" + tray_name + "_tc_connector"
+            response.success = True
+            self.get_logger().info(f"Successfully overrode {request.tool} location to tray.")
+
+        # else if check if the location is a known robot name
+        # if yes, attach to that robot
+        elif request.location in self.config["robots"]:
+            self.tools[request.tool] = request.location + "_tc_connector"
+            response.success = True
+            self.get_logger().info(f"Successfully overrode {request.tool} location to robot: {request.location}.")
+
+        # otherwise error out and return False as success
+        else:
+            self.get_logger().error(f"Location '{request.location}' is neither 'tray' nor a known robot name.")
+            response.success = False
+
         return response
 
 def main(args=None):
