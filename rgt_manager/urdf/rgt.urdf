@@ -133,4 +133,16 @@
     <parent link="world" />
     <child link="gelsight_vision" />
   </joint>
+  <!-- table -->
+  <link name="table">
+    <visual>
+      <geometry>
+        <mesh filename="package://rgt_manager/meshes/table.glb" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="table" type="fixed">
+    <parent link="world" />
+    <child link="table" />
+  </joint>
 </robot>

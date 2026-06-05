@@ -69,13 +69,12 @@ robots:
         w: 0.0
   panda:
     mount_point:
-      x: 0.0
-      y: 1.10
-      # z: -0.74
-      z: -0.00
+      x: 1.10
+      y: 0.0
+      z: -0.74
       ax: 0.00
       ay: 0.00
-      az: 1.00
+      az: 0.00
       w: 1.00
 
 trays:
