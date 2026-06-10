@@ -170,7 +170,7 @@ tools:
       z: 0.0
     child_transforms:
       gelsight_tooltip:
-        z: -0.094
+        z: -0.103
       camera_focus:
         x: 0.045
         z: -0.35
