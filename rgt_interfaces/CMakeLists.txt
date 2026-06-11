@@ -14,6 +14,7 @@ find_package(std_msgs REQUIRED)
 
 # List the files
 set(srv_files
+  "srv/ChangeTool.srv"
   "srv/TakeTool.srv"
   "srv/ReturnTool.srv"
   "srv/OverrideToolLocation.srv"

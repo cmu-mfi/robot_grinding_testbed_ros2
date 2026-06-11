@@ -1,4 +1,4 @@
 string robot_name
-string tray_name
+string tool_name
 ---
 bool success

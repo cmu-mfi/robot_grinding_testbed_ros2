@@ -1,4 +1,4 @@
-string robot_ns
-uint8 tool_changer_id
+string robot_name
+string tray_name
 ---
 bool success
