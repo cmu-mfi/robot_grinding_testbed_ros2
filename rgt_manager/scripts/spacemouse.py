@@ -39,8 +39,9 @@ class SpaceMouseNode(Node):
         self.current_t = 0.0
         self.previous_t = 0.0
         self.skipped_ts = 0
-        self.speed = 0.0
-        self.turn = 0.0
+        self.linear_speed = 0.0
+        self.tilt_speed = 0.0
+        self.yaw_speed = 0.0
         self.current_buttons = [0,0]
         self.previous_buttons = [0,0]
         self.left_button_pressed = False
@@ -66,7 +67,7 @@ class SpaceMouseNode(Node):
             if self.current_buttons[1] == 1 and self.previous_buttons[1] == 0:
                 self.right_button_pressed = True
             self.previous_buttons = self.current_buttons
-    def navigate(self, locked=False):
+    def navigate(self):
         if type(self.state) == pyspacemouse.pyspacemouse.SpaceNavigator:
             self.current_t = self.state.t
             diff = abs(self.current_t - self.previous_t)
@@ -85,18 +86,13 @@ class SpaceMouseNode(Node):
             self.previous_t = self.current_t
             
             # 1. Gather raw target velocities
-            target_x = self.state.x * self.speed
-            target_y = -self.state.y * self.speed
-            target_z = -self.state.z * self.speed
+            target_x = self.state.x * self.linear_speed
+            target_y = -self.state.y * self.linear_speed
+            target_z = -self.state.z * self.linear_speed
             
-            if locked:
-                target_ax = 0.0
-                target_ay = 0.0
-            else:
-                target_ax = -self.state.pitch * self.turn
-                target_ay = -self.state.roll * self.turn
-                
-            target_az = self.state.yaw * self.turn
+            target_ax = -self.state.pitch * self.tilt_speed
+            target_ay = -self.state.roll * self.tilt_speed
+            target_az = self.state.yaw * self.yaw_speed
 
             # 2. Apply Exponential Moving Average (EMA) smoothing
             alpha = self.smoothing_factor
@@ -147,13 +143,15 @@ def main(args=None):
         node.get_logger().info("Navigating!")
         while rclpy.ok():
             if not slow:
-                node.speed = 0.4
-                node.turn = 1.2
+                node.linear_speed = 0.4
+                node.tilt_speed = 1.2
+                node.yaw_speed = 1.2
             if slow:
-                node.speed = 0.04
-                node.turn = 0.12
+                node.linear_speed = 0.04
+                node.tilt_speed = 0.12
+                node.yaw_speed = 0.12
             if locked:
-                node.turn = 0.0
+                node.tilt_speed = 0.0
             node.navigate()
             if node.left_button_pressed:
                 node.left_button_pressed = False
