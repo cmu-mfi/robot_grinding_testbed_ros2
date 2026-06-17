@@ -231,8 +231,8 @@ class RgtManager(Node):
         home_client.call(req)
         # Setup reusable goal_msg
         goal_msg = PoseGoal.Goal()
-        goal_msg.velocity_scaling = 0.2
-        goal_msg.acceleration_scaling = 0.1
+        goal_msg.velocity_scaling = 0.4
+        goal_msg.acceleration_scaling = 0.2
         goal_msg.frame_id = robot_name + "_" + tray_name
         goal_msg.target_id = robot_name + "_tc_hook"
         goal_msg.target_pose.position = Point()
@@ -263,11 +263,14 @@ class RgtManager(Node):
         self.run_action(pose_goal_client, goal_msg)
         time.sleep(0.1)
         goal_msg.velocity_scaling = 0.1
-        goal_msg.target_pose.position = Point(x=-0.15, y=0.0, z=0.0095)
+        goal_msg.target_pose.position = Point(x=-0.17, y=0.0, z=0.0095)
         self.run_action(pose_goal_client, goal_msg)
         time.sleep(0.1)
+        goal_msg.velocity_scaling = 0.4
+        goal_msg.target_pose.position = Point(x=-0.17, y=0.0, z=0.15)
+        self.run_action(pose_goal_client, goal_msg)
         # move to home
-        req.speed = 0.4
+        req.speed = 0.6
         home_client.call(req)
 
     ### --- Take Tool Callback
@@ -302,15 +305,18 @@ class RgtManager(Node):
         home_client.call(req)
         # Setup reusable goal_msg
         goal_msg = PoseGoal.Goal()
-        goal_msg.velocity_scaling = 0.2
-        goal_msg.acceleration_scaling = 0.1
+        goal_msg.velocity_scaling = 0.4
+        goal_msg.acceleration_scaling = 0.2
         goal_msg.frame_id = robot_name + "_" + tray_name
         goal_msg.target_id = robot_name + "_tc_hook"
         goal_msg.target_pose.position = Point()
         goal_msg.target_pose.orientation=Quaternion(x=0.0, y=0.0, z=0.0, w=1.0)
         goal_msg.method = "PTP"
         # Move to tray
-        goal_msg.target_pose.position = Point(x=-0.15, y=0.0, z=0.0095)
+        goal_msg.target_pose.position = Point(x=-0.17, y=0.0, z=0.15)
+        self.run_action(pose_goal_client, goal_msg)
+        time.sleep(0.1)
+        goal_msg.target_pose.position = Point(x=-0.17, y=0.0, z=0.0095)
         self.run_action(pose_goal_client, goal_msg)
         time.sleep(0.1)
         # Tool Change Sequence
@@ -340,7 +346,7 @@ class RgtManager(Node):
         self.run_action(pose_goal_client, goal_msg)
         time.sleep(0.1)
         # move to home
-        req.speed = 0.4
+        req.speed = 0.6
         home_client.call(req)
 
     ### --- Return Tool Callback
