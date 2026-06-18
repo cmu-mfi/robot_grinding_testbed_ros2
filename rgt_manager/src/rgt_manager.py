@@ -99,17 +99,21 @@ class RgtManager(Node):
         if request.location == "tray":
             self.config["tools"][request.tool]["location"] = request.location
             self.get_logger().info(f"Successfully overrode {request.tool} location to tray.")
+            response.success = True
+            return response
             # TODO set master payload
         # If desired location is a known robot
         elif request.location in self.config["robots"]:
             self.config["tools"][request.tool]["location"] = request.location
             self.get_logger().info(f"Successfully overrode {request.tool} location to robot: {request.location}.")
+            response.success = True
+            return response
             # TODO set tool payload
         # otherwise error out and return False as success
         else:
             self.get_logger().error(f"Location '{request.location}' is neither 'tray' nor a known robot name.")
             response.success = False
-        return response
+            return response
 
 
     ### --- Dynamic Transform (Tools only)
