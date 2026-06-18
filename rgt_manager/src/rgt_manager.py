@@ -231,8 +231,8 @@ class RgtManager(Node):
         home_client.call(req)
         # Setup reusable goal_msg
         goal_msg = PoseGoal.Goal()
-        goal_msg.velocity_scaling = 0.4
-        goal_msg.acceleration_scaling = 0.2
+        goal_msg.velocity_scaling = 0.2
+        goal_msg.acceleration_scaling = 0.1
         goal_msg.frame_id = robot_name + "_" + tray_name
         goal_msg.target_id = robot_name + "_tc_hook"
         goal_msg.target_pose.position = Point()
@@ -305,8 +305,8 @@ class RgtManager(Node):
         home_client.call(req)
         # Setup reusable goal_msg
         goal_msg = PoseGoal.Goal()
-        goal_msg.velocity_scaling = 0.4
-        goal_msg.acceleration_scaling = 0.2
+        goal_msg.velocity_scaling = 0.2
+        goal_msg.acceleration_scaling = 0.15
         goal_msg.frame_id = robot_name + "_" + tray_name
         goal_msg.target_id = robot_name + "_tc_hook"
         goal_msg.target_pose.position = Point()
@@ -401,9 +401,9 @@ class RgtManager(Node):
         target_tool_location = self.config["tools"][request.tool_name]["location"]
         if target_tool_location in self.config["robots"] and target_tool_location != request.robot_name:
             other_robot = target_tool_location
-            tray_name = self.config["tools"][request.tool_name]["tray_name"]
-            self.get_logger().info(f"Tool '{request.tool_name}' is currently attached to another robot: '{other_robot}'. Forcing '{other_robot}' to return it to tray '{tray_name}' first.")
-            self.return_tool_to_tray(other_robot, tray_name, request.tool_name)
+            self.get_logger().error(f"Tool '{request.tool_name}' is currently attached to another robot: '{other_robot}'. Aborting.")
+            response.success = False
+            return response
         # If the requesting robot has a different tool attached, return it to its tray first
         if current_tool_attached is not None:
             tray_name = self.config["tools"][current_tool_attached]["tray_name"]
