@@ -2,16 +2,22 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>rgt_manager</name>
-  <version>0.0.0</version>
-  <description>rgt_manager and scripts</description>
+  <version>1.0.0</version>
+  <description>RGT Manager</description>
   <maintainer email="alexander@minor.pw">Alexander Minor</maintainer>
   <license>BSD-3-Clause</license>
 
-  <depend>ament_cmake</depend>
-  <depend>ament_cmake_python</depend>
+  <buildtool_depend>ament_cmake</buildtool_depend> 
   <depend>rclpy</depend>
+  <depend>action_msgs</depend>
+  <depend>ament_index_python</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>std_msgs</depend>
+  <depend>robot_manager_interfaces</depend>
+  <depend>rgt_interfaces</depend>
 
   <export>
-    <build_type>ament_cmake</build_type>
+    <build_type>ament_python</build_type>
   </export>
 </package>

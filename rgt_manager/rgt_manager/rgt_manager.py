@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import os
 import yaml
 import rclpy
@@ -6,7 +5,7 @@ import time
 from rclpy.action.client import ActionClient
 from action_msgs.msg import GoalStatus
 from rclpy.node import Node
-from geometry_msgs.msg import TransformStamped, Transform
+from geometry_msgs.msg import TransformStamped 
 from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster
 from tf2_ros import TransformBroadcaster
 from ament_index_python.packages import get_package_share_directory
