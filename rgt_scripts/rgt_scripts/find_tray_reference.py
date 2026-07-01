@@ -173,7 +173,7 @@ def main(args=None):
                 node.speed = 0.04
                 node.turn = 0.12
             if mode == 2:
-                node.speed = 0.04
+                node.speed = 0.02
                 node.turn = 0.00
             node.navigate()
             if node.left_button_pressed:
