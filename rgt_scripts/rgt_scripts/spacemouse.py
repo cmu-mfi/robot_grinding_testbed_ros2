@@ -9,7 +9,7 @@ import threading
 
 class SpaceMouseNode(Node):
     def __init__(self):
-        super().__init__('space_mouse_node')
+        super().__init__('spacemouse')
         self.declare_parameter('ns', '')
         self.ns = str(self.get_parameter("ns").value)
         if self.ns != "":
