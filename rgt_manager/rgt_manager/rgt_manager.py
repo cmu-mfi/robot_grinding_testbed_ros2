@@ -278,17 +278,17 @@ class RgtManager(Node):
 
     ### --- Take Tool Callback
     async def take_tool_callback(self, request, response):
-        self.get_logger().info(f"Received take_tool request for robot: {request.robot_name} and tray: {request.tray_name}")
+        self.get_logger().info(f"Received take_tool request for robot: {request.robot} and tray: {request.tray}")
         tool_name = ""
         for name, tool_config in self.config["tools"].items():
-            if tool_config["tray_name"] == request.tray_name:
+            if tool_config["tray_name"] == request.tray:
                 tool_name = name
                 break
         if tool_name == "":
-            self.get_logger().error(f"Tray '{request.tray_name}' isn't associated with any tool!")
+            self.get_logger().error(f"Tray '{request.tray}' isn't associated with any tool!")
             response.success = False
             return response
-        self.take_tool_from_tray(request.robot_name, request.tray_name, tool_name)
+        self.take_tool_from_tray(request.robot, request.tray, tool_name)
         response.success = True
         self.get_logger().info(f"Successfully finished take_tool operation")
         return response
@@ -354,68 +354,68 @@ class RgtManager(Node):
 
     ### --- Return Tool Callback
     async def return_tool_callback(self, request, response):
-        self.get_logger().info(f"Received return_tool request for robot: {request.robot_name} and tray: {request.tray_name}")
+        self.get_logger().info(f"Received return_tool request for robot: {request.robot} and tray: {request.tray}")
         tool_name = ""
         for name, tool_config in self.config["tools"].items():
-            if tool_config["tray_name"] == request.tray_name:
+            if tool_config["tray_name"] == request.tray:
                 tool_name = name
                 break
         if tool_name == "":
-            self.get_logger().error(f"Tray '{request.tray_name}' isn't associated with any tool!")
+            self.get_logger().error(f"Tray '{request.tray}' isn't associated with any tool!")
             response.success = False
             return response
-        self.return_tool_to_tray(request.robot_name, request.tray_name, tool_name)
+        self.return_tool_to_tray(request.robot, request.tray, tool_name)
         response.success = True
         self.get_logger().info(f"Successfully finished return_tool operation")
         return response
 
     ### --- Change Tool Callback
     async def change_tool_callback(self, request, response):
-        self.get_logger().info(f"Received change_tool request for robot: {request.robot_name} and tool: '{request.tool_name}'")
+        self.get_logger().info(f"Received change_tool request for robot: {request.robot} and tool: '{request.tool}'")
         # Check if robot currently has a tool attached
         current_tool_attached = None
         for name, tool_config in self.config["tools"].items():
-            if tool_config["location"] == request.robot_name:
+            if tool_config["location"] == request.robot:
                 current_tool_attached = name
                 break
         # If requested tool is empty, only return the current tool (if one is attached)
-        if request.tool_name == "":
+        if request.tool == "":
             if current_tool_attached is not None:
                 tray_name = self.config["tools"][current_tool_attached]["tray_name"]
-                self.get_logger().info(f"Robot '{request.robot_name}' currently has '{current_tool_attached}' attached. Returning it to tray '{tray_name}'.")
-                self.return_tool_to_tray(request.robot_name, tray_name, current_tool_attached)
+                self.get_logger().info(f"Robot '{request.robot}' currently has '{current_tool_attached}' attached. Returning it to tray '{tray_name}'.")
+                self.return_tool_to_tray(request.robot, tray_name, current_tool_attached)
             else:
-                self.get_logger().info(f"No tool currently attached to '{request.robot_name}'. Nothing to return.")
+                self.get_logger().info(f"No tool currently attached to '{request.robot}'. Nothing to return.")
             
             response.success = True
             self.get_logger().info(f"Successfully finished change_tool operation (return only)")
             return response
         # Check if requested tool exists
-        if request.tool_name not in self.config["tools"]:
-            self.get_logger().error(f"Tool '{request.tool_name}' does not exist in the configuration.")
+        if request.tool not in self.config["tools"]:
+            self.get_logger().error(f"Tool '{request.tool}' does not exist in the configuration.")
             response.success = False
             return response
         # Check if requested tool is already attached to the requesting robot
-        if self.config["tools"][request.tool_name]["location"] == request.robot_name:
-            self.get_logger().info(f"Tool '{request.tool_name}' is already attached to robot '{request.robot_name}'.")
+        if self.config["tools"][request.tool]["location"] == request.robot:
+            self.get_logger().info(f"Tool '{request.tool}' is already attached to robot '{request.robot}'.")
             response.success = True
             return response
         # Check if requested tool is attached to another robot
-        target_tool_location = self.config["tools"][request.tool_name]["location"]
-        if target_tool_location in self.config["robots"] and target_tool_location != request.robot_name:
+        target_tool_location = self.config["tools"][request.tool]["location"]
+        if target_tool_location in self.config["robots"] and target_tool_location != request.robot:
             other_robot = target_tool_location
-            self.get_logger().error(f"Tool '{request.tool_name}' is currently attached to another robot: '{other_robot}'. Aborting.")
+            self.get_logger().error(f"Tool '{request.tool}' is currently attached to another robot: '{other_robot}'. Aborting.")
             response.success = False
             return response
         # If the requesting robot has a different tool attached, return it to its tray first
         if current_tool_attached is not None:
             tray_name = self.config["tools"][current_tool_attached]["tray_name"]
-            self.get_logger().info(f"Robot '{request.robot_name}' currently has '{current_tool_attached}' attached. Returning it to tray '{tray_name}'.")
-            self.return_tool_to_tray(request.robot_name, tray_name, current_tool_attached)
+            self.get_logger().info(f"Robot '{request.robot}' currently has '{current_tool_attached}' attached. Returning it to tray '{tray_name}'.")
+            self.return_tool_to_tray(request.robot, tray_name, current_tool_attached)
         # Take new tool from associated tray
-        target_tray_name = self.config["tools"][request.tool_name]["tray_name"]
-        self.get_logger().info(f"Taking requested tool '{request.tool_name}' from tray '{target_tray_name}'.")
-        self.take_tool_from_tray(request.robot_name, target_tray_name, request.tool_name)
+        target_tray_name = self.config["tools"][request.tool]["tray_name"]
+        self.get_logger().info(f"Taking requested tool '{request.tool}' from tray '{target_tray_name}'.")
+        self.take_tool_from_tray(request.robot, target_tray_name, request.tool)
         response.success = True
         self.get_logger().info(f"Successfully finished change_tool operation")
         return response
