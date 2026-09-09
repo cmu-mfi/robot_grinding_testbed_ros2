@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot name="rgt" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Includes -->
+  <xacro:include filename="$(find rgt_manager)/urdf/ur20_tc_master.macro.xacro" />
+  <xacro:include filename="$(find rgt_manager)/urdf/nex10_tc_master.macro.xacro" />
+  <xacro:include filename="$(find rgt_manager)/urdf/tray.macro.xacro" />
+  <xacro:include filename="$(find rgt_manager)/urdf/sander.macro.xacro" />
+  <xacro:include filename="$(find rgt_manager)/urdf/grinder.macro.xacro" />
+  <xacro:include filename="$(find rgt_manager)/urdf/gelsight_vision.macro.xacro" />
+  <xacro:include filename="$(find rgt_manager)/urdf/table.macro.xacro" />
+
+  <!-- Base Link -->
+  <link name="world" />
+
+  <!-- Robot Tool Change Masters -->
+  <xacro:ur20_tc_master />
+  <xacro:nex10_tc_master />
+
+  <!-- Trays -->
+  <xacro:tray name="nex10_tray_1" />
+  <xacro:tray name="nex10_tray_2" />
+  <xacro:tray name="nex10_tray_3" />
+  <xacro:tray name="ur20_tray_1" />
+  <xacro:tray name="ur20_tray_2" />
+  <xacro:tray name="ur20_tray_3" />
+
+  <!-- Tools -->
+  <xacro:sander />
+  <xacro:grinder />
+  <xacro:gelsight_vision />
+
+  <!-- Table -->
+  <xacro:table />
+</robot>

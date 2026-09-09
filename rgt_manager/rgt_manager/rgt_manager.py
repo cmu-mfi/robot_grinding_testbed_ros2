@@ -2,6 +2,7 @@ import os
 import yaml
 import rclpy
 import time
+import xacro
 from rclpy.action.client import ActionClient
 from action_msgs.msg import GoalStatus
 from rclpy.node import Node
@@ -23,7 +24,7 @@ class RgtManager(Node):
         super().__init__('rgt_manager')
         self.declare_parameter('package', 'rgt_manager')
         self.declare_parameter('config', 'config.yaml')
-        self.declare_parameter('urdf', 'rgt.urdf')
+        self.declare_parameter('urdf', 'rgt.xacro')
 
         package = str(self.get_parameter("package").value)
         config = str(self.get_parameter("config").value)
@@ -33,11 +34,11 @@ class RgtManager(Node):
 
         package_share_directory = get_package_share_directory(package)
 
-        # read urdf
-        urdf_path = os.path.join(package_share_directory, 'urdf', urdf)
-        self.urdf = self.read_urdf(urdf_path)
+        # Process Xacro file into URDF XML string
+        xacro_path = os.path.join(package_share_directory, 'urdf', urdf)
+        self.urdf = self.read_xacro(xacro_path)
         
-        # publish urdf
+        # Publish URDF
         qos_profile = QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL)
         self.robot_description_publisher = self.create_publisher(String, '/rgt/robot_description', qos_profile)
         msg = String()
@@ -85,6 +86,11 @@ class RgtManager(Node):
             self.change_tool_callback,
             callback_group=self.cb_group
         )
+
+    def read_xacro(self, file_path: str) -> str:
+        """Parse Xacro macros and ROS package paths, returning URDF XML string."""
+        doc = xacro.process_file(file_path)
+        return doc.toxml()
 
     ### --- Override Tool Location Callback
     async def override_tool_location_callback(self, request, response):

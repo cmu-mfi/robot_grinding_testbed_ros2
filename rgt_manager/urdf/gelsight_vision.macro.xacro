@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="gelsight_vision" params="name:=gelsight_vision parent:=world">
+    <link name="${name}">
+      <visual>
+        <geometry>
+          <mesh filename="package://rgt_manager/meshes/gelsight_vision.glb" scale="1 1 1" />
+        </geometry>
+      </visual>
+    </link>
+    <joint name="${name}" type="fixed">
+      <parent link="${parent}" />
+      <child link="${name}" />
+    </joint>
+  </xacro:macro>
+</robot>
