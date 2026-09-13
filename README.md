@@ -88,4 +88,9 @@ or
 ros2 launch robotiq_description bringup.launch.py ns:=gripper use_fake_hardware:=false
 ```
 3. To see the visualisation in foxglove, you have to add a URDF visualisation for the topic `/gripper/robot_description`
+4. To control the gripper use the ros2 action interface like this:
+You can send commands to the gripper using the ros2 action interface:
+```sh
+ros2 action send_goal /gripper/robotiq_gripper_controller/gripper_cmd control_msgs/action/ParallelGripperCommand "{command: {name: ['robotiq_85_left_knuckle_joint'], position: [0.0]}}"
+```
 
