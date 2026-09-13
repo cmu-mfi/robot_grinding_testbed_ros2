@@ -145,6 +145,24 @@ trays:
         ay: 0.00143193
         az: 0.71235429
         w: 0.70181635
+  tray_4: # NOT CALIBRATED
+    references:
+      ur20:
+        x: 0.73054373
+        y: -0.66218199
+        z: 0.43956369
+        ax: 0.00392772
+        ay: -0.00328177
+        az: -0.75022815
+        w: 0.66115923
+      nex10: 
+        x: 0.89791759
+        y: 0.51903821
+        z: 0.4116181
+        ax: -0.00176855
+        ay: 0.00143193
+        az: 0.71235429
+        w: 0.70181635
 
 tools:
   sander:
@@ -160,9 +178,19 @@ tools:
       grinder_tooltip:
         y: 0.11228
         z: -0.127948
-  gelsight_vision:
+  gripper:
     location: tray
     tray_name: tray_3
+    child_transforms:
+      robotiq_85_base_link:
+        z: -0.04
+        ax: 1.0
+        ay: 1.0
+        az: 0.0
+        w: 0.0
+  gelsight_vision:
+    location: tray
+    tray_name: tray_4
     child_transforms:
       gelsight_tooltip:
         z: -0.1144

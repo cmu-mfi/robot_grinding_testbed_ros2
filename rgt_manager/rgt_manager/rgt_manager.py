@@ -3,6 +3,7 @@ import yaml
 import rclpy
 import time
 import xacro
+import subprocess
 from rclpy.action.client import ActionClient
 from action_msgs.msg import GoalStatus
 from rclpy.node import Node
@@ -45,6 +46,12 @@ class RgtManager(Node):
         msg.data = self.urdf
         self.robot_description_publisher.publish(msg)
         self.get_logger().info("Successfully published urdf!")
+
+        # self.rsp_process = subprocess.Popen([
+        #     'ros2', 'run', 'robot_state_publisher', 'robot_state_publisher',
+        #     '--ros-args',
+        #     '-p', f'robot_description:={self.urdf}'
+        # ])
 
         # read config
         config_path = os.path.join(package_share_directory, 'config', config)
