@@ -47,12 +47,6 @@ class RgtManager(Node):
         self.robot_description_publisher.publish(msg)
         self.get_logger().info("Successfully published urdf!")
 
-        # self.rsp_process = subprocess.Popen([
-        #     'ros2', 'run', 'robot_state_publisher', 'robot_state_publisher',
-        #     '--ros-args',
-        #     '-p', f'robot_description:={self.urdf}'
-        # ])
-
         # read config
         config_path = os.path.join(package_share_directory, 'config', config)
         self.config = self.read_config(config_path)
@@ -127,13 +121,13 @@ class RgtManager(Node):
             response.success = False
             return response
 
-
-    ### --- Dynamic Transform (Tools only)
+    ### --- Dynamic Transform (Tools and Tool Child Transforms)
     def publish_dynamic_transforms(self):
         current_time = self.get_clock().now().to_msg()
         for tool_name, tool_config in self.config["tools"].items():
             location = tool_config["location"]
             tray_name = tool_config["tray_name"]
+            # Publish main tool transform
             if location == "tray":
                 for robot_name in self.config["trays"][tray_name]["references"]:
                     t = TransformStamped()
@@ -148,6 +142,21 @@ class RgtManager(Node):
                 t.header.frame_id = location + "_tc_connector"
                 t.child_frame_id = tool_name
                 self.tf_broadcaster.sendTransform(t)
+            # Publish child transforms dynamically relative to the tool frame
+            if "child_transforms" in tool_config:
+                for child_frame, transform in tool_config["child_transforms"].items():
+                    t_child = TransformStamped()
+                    t_child.header.stamp = current_time
+                    t_child.header.frame_id = str(tool_name)
+                    t_child.child_frame_id = str(child_frame)
+                    t_child.transform.translation.x = float(transform.get('x', 0.0))
+                    t_child.transform.translation.y = float(transform.get('y', 0.0))
+                    t_child.transform.translation.z = float(transform.get('z', 0.0))
+                    t_child.transform.rotation.x = float(transform.get('ax', 0.0))
+                    t_child.transform.rotation.y = float(transform.get('ay', 0.0))
+                    t_child.transform.rotation.z = float(transform.get('az', 0.0))
+                    t_child.transform.rotation.w = float(transform.get('w', 1.0))
+                    self.tf_broadcaster.sendTransform(t_child)
 
     ### --- Initial Config
     def initial_config(self):
@@ -177,12 +186,6 @@ class RgtManager(Node):
                     parent_frame = child_frame
                     child_frame = robot_name + "_" + tray_name + "_tc_connector"
                     self.publish_static_transform(parent_frame, child_frame, {"x": -0.046, "z": -0.0066})
-        # tools
-        for tool_name, tool_config in self.config["tools"].items():
-            # publish static child transform
-            if "child_transforms" in tool_config:
-                for child_frame, transform in tool_config["child_transforms"].items():
-                    self.publish_static_transform(tool_name, child_frame, transform)
 
     ### --- Helper Functions
     # Run Action
@@ -198,7 +201,7 @@ class RgtManager(Node):
     # Read Config
     def read_config(self, path):
         with open(path, 'r') as f:
-                data = yaml.safe_load(f)
+            data = yaml.safe_load(f)
         if not data:
             self.get_logger().error(f'Config file at {path} is empty or invalid.')
             return dict()
@@ -216,7 +219,6 @@ class RgtManager(Node):
     # Publish Static Transform
     def publish_static_transform(self, parent_frame, child_frame, transform):
         try:
-            # self.get_logger().info(f"Publishing transform with parent_frame: {parent_frame} and child_frame: {child_frame}")
             t = TransformStamped()
             t.header.stamp = self.get_clock().now().to_msg()
             t.header.frame_id = str(parent_frame)
@@ -449,4 +451,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
