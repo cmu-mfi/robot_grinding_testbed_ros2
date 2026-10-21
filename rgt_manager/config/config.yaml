@@ -176,8 +176,8 @@ tools:
     tray_name: tray_2
     child_transforms:
       grinder_tooltip:
-        y: 0.11228
-        z: -0.127948
+        x: 0.11228
+        z: -0.140
   gripper:
     location: tray
     tray_name: tray_3
