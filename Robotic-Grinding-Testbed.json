@@ -2,18 +2,19 @@
   "configById": {
     "3D!4eotes4": {
       "cameraState": {
-        "distance": 3.8742296891646637,
         "perspective": true,
-        "phi": 40.28687367640009,
+        "distance": 2.4417309747239355,
+        "phi": 76.17486011681525,
+        "thetaOffset": -85.64439540355538,
+        "targetOffset": [
+          -0.6531510777223569,
+          -0.10774498187334183,
+          0.18084389395923778
+        ],
         "target": [
           0,
           0,
           0
-        ],
-        "targetOffset": [
-          0.2827568763663403,
-          -0.00855619125465003,
-          2.2744737580059975e-17
         ],
         "targetOrientation": [
           0,
@@ -21,7 +22,6 @@
           0,
           1
         ],
-        "thetaOffset": -25.440542973065778,
         "fovy": 45,
         "near": 0.1,
         "far": 5000
@@ -33,7 +33,9 @@
           "axisSize": 0.1,
           "lineWidth": 0,
           "visible": true,
-          "offsetReferenceFrame": "parent"
+          "offsetReferenceFrame": "parent",
+          "labelSize": 0.01,
+          "editable": false
         },
         "meshUpAxis": "z_up",
         "ignoreColladaUpAxis": false
@@ -76,7 +78,7 @@
           "visible": false
         },
         "frame:world": {
-          "visible": false
+          "visible": true
         },
         "frame:tool0": {
           "visible": false
@@ -424,10 +426,10 @@
           "visible": false
         },
         "frame:grinder_tooltip": {
-          "visible": false
+          "visible": true
         },
         "frame:follower_reference": {
-          "visible": true
+          "visible": false
         },
         "frame:panda_mount_point": {
           "visible": false
@@ -470,6 +472,63 @@
         },
         "frame:nex10_calibration_tool": {
           "visible": false
+        },
+        "frame:table": {
+          "visible": false
+        },
+        "frame:leader_reference": {
+          "visible": false
+        },
+        "frame:panda_ft_frame": {
+          "visible": true
+        },
+        "frame:": {
+          "visible": false
+        },
+        "frame:gelsight_vision_d555_link": {
+          "visible": false
+        },
+        "frame:gelsight_vision_d555_color_frame": {
+          "visible": false
+        },
+        "frame:gelsight_vision_d555_color_optical_frame": {
+          "visible": false
+        },
+        "frame:gelsight_vision_d555_depth_frame": {
+          "visible": false
+        },
+        "frame:gelsight_vision_d555_depth_optical_frame": {
+          "visible": false
+        },
+        "frame:plate": {
+          "visible": false
+        },
+        "frame:ur20_tray_4": {
+          "visible": false
+        },
+        "frame:ur20_tray_4_tc_connector": {
+          "visible": false
+        },
+        "frame:mount_point": {
+          "visible": false
+        },
+        "frame:gripper": {
+          "visible": false
+        },
+        "frame:robotiq_85_base_link": {
+          "visible": false
+        },
+        "frame:robotiq_85_left_inner_knuckle_link": {
+          "visible": false
+        },
+        "frame:robotiq_85_left_knuckle_link": {
+          "visible": false
+        },
+        "frame:nex10_tray_4": {
+          "visible": false
+        },
+        "frame:nex10_tray_4_tc_connector": {
+          "visible": false
         }
       },
       "topics": {
@@ -494,6 +553,9 @@
         },
         "/cam_watch/color/camera_info": {
           "visible": false
+        },
+        "/visualization_marker": {
+          "visible": true
         }
       },
       "layers": {
@@ -524,7 +586,7 @@
           "displayMode": "visual",
           "showAxis": false,
           "axisScale": 1,
-          "showOutlines": true,
+          "showOutlines": false,
           "opacity": 1,
           "visible": true,
           "instanceId": "b2dc9104-91d5-4a57-b2e7-21107517740d",
@@ -536,7 +598,30 @@
           "parameter": "",
           "topic": "/nex10/robot_description",
           "framePrefix": "",
-          "order": 1
+          "order": 1,
+          "links": {
+            "nex10_link_3": {
+              "visible": true
+            },
+            "nex10_link_1": {
+              "visible": true
+            },
+            "nex10_link_5": {
+              "visible": true
+            },
+            "nex10_link_6": {
+              "visible": true
+            },
+            "nex10_flange": {
+              "visible": true
+            },
+            "nex10_tool0": {
+              "visible": true
+            },
+            "nex10_link_0": {
+              "visible": true
+            }
+          }
         },
         "34fb8ac0-7bd1-4ad8-91e9-3e8e24e3948f": {
           "controlMode": "transforms",
@@ -545,7 +630,6 @@
           "showAxis": false,
           "axisScale": 1,
           "showOutlines": false,
-          "opacity": 1,
           "visible": true,
           "instanceId": "34fb8ac0-7bd1-4ad8-91e9-3e8e24e3948f",
           "layerId": "foxglove.Urdf",
@@ -561,7 +645,8 @@
             "ur20_wrist_3_link": {
               "visible": true
             }
-          }
+          },
+          "opacity": 1
         },
         "bf6786a3-86c7-46a2-b8ca-d17ef0703372": {
           "controlMode": "transforms",
@@ -570,8 +655,7 @@
           "fallbackColor": "#ffffff",
           "showAxis": false,
           "axisScale": 1,
-          "showOutlines": true,
-          "opacity": 1,
+          "showOutlines": false,
           "visible": false,
           "instanceId": "bf6786a3-86c7-46a2-b8ca-d17ef0703372",
           "layerId": "foxglove.Urdf",
@@ -582,7 +666,8 @@
           "parameter": "",
           "topic": "/panda/robot_description",
           "framePrefix": "",
-          "order": 3
+          "order": 3,
+          "opacity": 1
         },
         "850b3fa4-f6b4-4ad8-ae4c-2dff11304aa3": {
           "controlMode": "transforms",
@@ -592,7 +677,6 @@
           "showAxis": false,
           "axisScale": 1,
           "showOutlines": false,
-          "opacity": 1,
           "visible": true,
           "instanceId": "850b3fa4-f6b4-4ad8-ae4c-2dff11304aa3",
           "layerId": "foxglove.Urdf",
@@ -625,8 +709,60 @@
             },
             "nex10_tray_3": {
               "visible": false
+            },
+            "world": {
+              "visible": true
+            },
+            "nex10_tc_master": {
+              "visible": true
+            },
+            "ur20_tray_3": {
+              "visible": true
+            },
+            "robotiq_arg2f_base_link": {
+              "visible": true
+            },
+            "gripper": {
+              "visible": true
+            },
+            "ur20_tc_master": {
+              "visible": true
+            },
+            "gelsight_vision": {
+              "visible": true
+            },
+            "table": {
+              "visible": true
+            },
+            "robotiq_arg2f_tcp": {
+              "visible": true
+            },
+            "nex10_tray_4": {
+              "visible": false
             }
-          }
+          },
+          "opacity": 1
+        },
+        "5e8694bf-082a-4502-9c63-37c13e58f579": {
+          "controlMode": "transforms",
+          "jointStatesTopic": "",
+          "displayMode": "auto",
+          "fallbackColor": "#ffffff",
+          "showAxis": false,
+          "axisScale": 1,
+          "showOutlines": true,
+          "opacity": 1,
+          "visible": true,
+          "instanceId": "5e8694bf-082a-4502-9c63-37c13e58f579",
+          "layerId": "foxglove.Urdf",
+          "label": "Gripper",
+          "sourceType": "topic",
+          "url": "",
+          "filePath": "",
+          "parameter": "",
+          "topic": "/gripper/robot_description",
+          "framePrefix": "",
+          "order": 5
         }
       },
       "publish": {
@@ -643,23 +779,470 @@
       "followTf": "world",
       "fixedFrame": "world"
     },
+    "Tab!3wdrl16": {
+      "tabs": [
+        {
+          "title": "Forces & Torques",
+          "layout": "Plot!267mjd7"
+        },
+        {
+          "title": "Controller Info",
+          "layout": "RawMessages!1xyr0z9"
+        },
+        {
+          "title": "Joint Position",
+          "layout": "Plot!4bqt6a5"
+        },
+        {
+          "title": "EE Pose",
+          "layout": "Plot!454ikpb"
+        },
+        {
+          "title": "EE Velocity",
+          "layout": "Plot!1wo6pl4"
+        },
+        {
+          "title": "Admittance",
+          "layout": {
+            "first": "Plot!t35a10",
+            "second": {
+              "first": "Plot!3h6ukkh",
+              "second": "Plot!uz68wo",
+              "direction": "column",
+              "splitPercentage": 52.666666666666664
+            },
+            "direction": "column",
+            "splitPercentage": 31.818181818181817
+          }
+        }
+      ],
+      "activeTabIdx": 0
+    },
     "Plot!267mjd7": {
       "paths": [
         {
           "timestampMethod": "receiveTime",
-          "value": "/ur20/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.z",
-          "enabled": true,
+          "value": "/ur20/wrench.wrench.force.x",
+          "enabled": false,
           "color": "#4e98e2",
-          "id": "7b8b8ec0-7816-454c-8db8-ccbb0e96493e",
-          "label": "filtered"
+          "id": "22eb01d5-e65e-4553-a2a2-b14f431335c1",
+          "label": "x"
         },
         {
           "timestampMethod": "receiveTime",
-          "value": "/ur20/force_torque_sensor_broadcaster/wrench.wrench.force.z",
+          "value": "/ur20/wrench.wrench.force.y",
+          "enabled": false,
+          "color": "#f5774d",
+          "id": "10afe100-3598-497a-a8f5-0f4b9bf302d8",
+          "label": "y"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/wrench.wrench.force.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "b6c55c61-0c6a-4d94-9662-1ded59d6c7e3",
+          "label": "z"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/wrench.wrench.torque.x",
+          "enabled": false,
+          "color": "#5cd6a9",
+          "id": "fc4abfc3-7b81-4581-9e3d-a0dd69ba36bc",
+          "label": "ax"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/wrench.wrench.torque.y",
+          "enabled": false,
+          "color": "#61cbff",
+          "id": "34a8e965-aaba-4a65-a607-6ff33c79c9e8",
+          "label": "ay"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/wrench.wrench.torque.z",
+          "enabled": false,
+          "color": "#a395e2",
+          "id": "50054ae0-b6c7-45dc-b0dc-b3c09e8f8ec6",
+          "label": "az"
+        }
+      ],
+      "showYAxisLabels": true
+    },
+    "RawMessages!1xyr0z9": {
+      "defaultExpanded": false,
+      "topicPath": "/ur20/controller_manager/introspection_data/full"
+    },
+    "Plot!4bqt6a5": {
+      "paths": [
+        {
+          "value": "/ur20/controller_manager/introspection_data/full.statistics[:]{name==\"state_interface.ur20_shoulder_pan_joint/position\"}.value",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#4e98e2",
+          "id": "aa1af19a-5126-43fa-b414-2072c6d0c3f6"
+        },
+        {
+          "value": "/ur20/controller_manager/introspection_data/full.statistics[8].value",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#f5774d",
+          "id": "86790ff6-b3ec-45cc-babe-33ef597ba40b"
+        },
+        {
+          "value": "/ur20/controller_manager/introspection_data/full.statistics[11].name",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#f7df71",
+          "id": "f6802663-19cf-49e2-9147-b8883969a78b"
+        },
+        {
+          "value": "/ur20/controller_manager/introspection_data/full.statistics[14].value",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#5cd6a9",
+          "id": "10ed4a60-71d0-4192-868c-d1fbc9474371"
+        },
+        {
+          "value": "/ur20/controller_manager/introspection_data/full.statistics[17].value",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#61cbff",
+          "id": "864490bd-2bf2-4b12-a4d4-c89ed52a8311"
+        },
+        {
+          "value": "/ur20/controller_manager/introspection_data/full.statistics[20].value",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#a395e2",
+          "id": "8f2df7f2-a989-41f4-840a-a7b1b2542c06"
+        }
+      ]
+    },
+    "Plot!454ikpb": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/ee_pose.pose.position.x",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "2368fdff-3855-48ee-bbfe-13536e2ea123",
+          "label": ""
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/ee_pose.pose.position.y",
           "enabled": true,
           "color": "#f5774d",
-          "id": "50d9b850-d6e0-40dc-b728-2a151a3a6cab",
-          "label": "unfiltered"
+          "id": "80dc6fd9-5500-48f2-9230-5e4f94849979"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/ee_pose.pose.position.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "bc9080a5-1aa4-4f6a-9c88-c94a228dbf9f"
+        }
+      ]
+    },
+    "Plot!1wo6pl4": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/ee_twist.twist.linear.x",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "2368fdff-3855-48ee-bbfe-13536e2ea123",
+          "label": ""
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/ee_twist.twist.linear.y",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "80dc6fd9-5500-48f2-9230-5e4f94849979"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/ee_twist.twist.linear.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "bc9080a5-1aa4-4f6a-9c88-c94a228dbf9f"
+        }
+      ]
+    },
+    "Plot!t35a10": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/ee_pose.pose.position.z",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "5d8bec53-eeba-4751-ad17-d32ad3c80543",
+          "label": "Actual Pose"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/admittance_pose_servo.target_pose.position.z",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "78b3459c-4c13-4855-aba2-340364cc0502",
+          "label": "Desired Pose"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "0.337",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "eb832b72-c29a-41f6-9baa-31e31ae414b9",
+          "label": "Wall"
+        }
+      ]
+    },
+    "Plot!3h6ukkh": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/wrench.wrench.force.z",
+          "enabled": true,
+          "color": "#e34fbe",
+          "id": "5e6c0efd-c843-44d4-b766-9c45066e7a70"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "-15",
+          "enabled": false,
+          "color": "#f7df71",
+          "id": "5b63c874-589c-4a54-962f-793c93ee6a27"
+        }
+      ]
+    },
+    "Plot!uz68wo": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/admittance_k.data[2]",
+          "enabled": false,
+          "color": "#4e98e2",
+          "id": "8ce972d0-8723-4808-a1c7-111b88399ab4",
+          "label": "Stiffness"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/admittance_b.data[2]",
+          "enabled": false,
+          "color": "#f5774d",
+          "id": "3566bb50-06b3-41ff-9daa-495cdf95c800",
+          "label": "Damping"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/ur20/admittance_m.data[2]",
+          "enabled": false,
+          "color": "#f7df71",
+          "id": "e8a8dc41-77f8-49e6-b1b6-4875c2cec01b",
+          "label": "Mass"
+        }
+      ],
+      "foxglovePanelTitle": "Parameters",
+      "showLegend": true
+    },
+    "Tab!3sqcyrk": {
+      "tabs": [
+        {
+          "title": "Forces & Torques",
+          "layout": "Plot!3pzs6dk"
+        },
+        {
+          "title": "Controller Info",
+          "layout": "RawMessages!1nzbwdj"
+        },
+        {
+          "title": "Joint Position",
+          "layout": "Plot!1h46gtf"
+        },
+        {
+          "title": "EE Pose",
+          "layout": "Plot!2koxaii"
+        },
+        {
+          "title": "EE Velocity",
+          "layout": "Plot!m8zgtx"
+        }
+      ],
+      "activeTabIdx": 3
+    },
+    "Plot!3pzs6dk": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/wrench.wrench.force.x",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "22eb01d5-e65e-4553-a2a2-b14f431335c1",
+          "label": "x"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/wrench.wrench.force.y",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "10afe100-3598-497a-a8f5-0f4b9bf302d8",
+          "label": "y"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/wrench.wrench.force.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "b6c55c61-0c6a-4d94-9662-1ded59d6c7e3",
+          "label": "z"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/wrench.wrench.torque.x",
+          "enabled": true,
+          "color": "#5cd6a9",
+          "id": "fc4abfc3-7b81-4581-9e3d-a0dd69ba36bc",
+          "label": "ax"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/wrench.wrench.torque.y",
+          "enabled": true,
+          "color": "#61cbff",
+          "id": "34a8e965-aaba-4a65-a607-6ff33c79c9e8",
+          "label": "ay"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/wrench.wrench.torque.z",
+          "enabled": true,
+          "color": "#a395e2",
+          "id": "50054ae0-b6c7-45dc-b0dc-b3c09e8f8ec6",
+          "label": "az"
+        }
+      ],
+      "showYAxisLabels": true
+    },
+    "RawMessages!1nzbwdj": {
+      "defaultExpanded": false,
+      "topicPath": "/nex10/controller_manager/introspection_data/full"
+    },
+    "Plot!1h46gtf": {
+      "paths": [
+        {
+          "value": "/nex10/joint_states.position[0]",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#4e98e2",
+          "id": "aa1af19a-5126-43fa-b414-2072c6d0c3f6"
+        },
+        {
+          "value": "/nex10/joint_states.position[1]",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#f5774d",
+          "id": "86790ff6-b3ec-45cc-babe-33ef597ba40b"
+        },
+        {
+          "value": "/nex10/joint_states.position[2]",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#f7df71",
+          "id": "f6802663-19cf-49e2-9147-b8883969a78b"
+        },
+        {
+          "value": "/nex10/joint_states.position[3]",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#5cd6a9",
+          "id": "10ed4a60-71d0-4192-868c-d1fbc9474371"
+        },
+        {
+          "value": "/nex10/joint_states.position[4]",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#61cbff",
+          "id": "864490bd-2bf2-4b12-a4d4-c89ed52a8311"
+        },
+        {
+          "value": "/nex10/joint_states.position[5]",
+          "enabled": true,
+          "timestampMethod": "receiveTime",
+          "showLine": true,
+          "color": "#a395e2",
+          "id": "8f2df7f2-a989-41f4-840a-a7b1b2542c06"
+        }
+      ]
+    },
+    "Plot!2koxaii": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/ee_pose.pose.position.x",
+          "enabled": false,
+          "color": "#4e98e2",
+          "id": "15fd25f5-5b0c-4738-9a04-59a7ce5296be"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/ee_pose.pose.position.y",
+          "enabled": false,
+          "color": "#f5774d",
+          "id": "b553d625-36bb-46e7-946d-6fbf748c99fc"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/ee_pose.pose.position.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "654d10a8-3cdc-48d1-af75-43374bc3a4c5"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/admittance_pose_servo.target_pose.position.z",
+          "enabled": true,
+          "color": "#5cd6a9",
+          "id": "bdc2656a-1680-413d-ab0c-058161584d2e"
+        }
+      ]
+    },
+    "Plot!m8zgtx": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/ee_twist.twist.linear.x",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "15fd25f5-5b0c-4738-9a04-59a7ce5296be"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/ee_twist.twist.linear.y",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "b553d625-36bb-46e7-946d-6fbf748c99fc"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/nex10/ee_twist.twist.linear.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "654d10a8-3cdc-48d1-af75-43374bc3a4c5"
         }
       ]
     },
@@ -667,7 +1250,7 @@
       "paths": [
         {
           "timestampMethod": "receiveTime",
-          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.x",
+          "value": "/nex10/wrench.wrench.force.x",
           "enabled": true,
           "color": "#4e98e2",
           "id": "7b8b8ec0-7816-454c-8db8-ccbb0e96493e",
@@ -675,7 +1258,7 @@
         },
         {
           "timestampMethod": "receiveTime",
-          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.y",
+          "value": "/nex10/wrench.wrench.force.y",
           "enabled": true,
           "color": "#f5774d",
           "id": "942a287e-5ca1-40b4-a937-9243dff75333",
@@ -683,7 +1266,7 @@
         },
         {
           "timestampMethod": "receiveTime",
-          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.z",
+          "value": "/nex10/wrench.wrench.force.z",
           "enabled": true,
           "color": "#f7df71",
           "id": "e78fa195-22e4-435d-a11c-0e6af2abba56",
@@ -691,7 +1274,7 @@
         },
         {
           "timestampMethod": "receiveTime",
-          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.torque.x",
+          "value": "/nex10/wrench.wrench.torque.x",
           "enabled": true,
           "color": "#5cd6a9",
           "id": "bfa6ea8e-37ac-4eae-a781-78f38a54ce57",
@@ -699,7 +1282,7 @@
         },
         {
           "timestampMethod": "receiveTime",
-          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.torque.y",
+          "value": "/nex10/wrench.wrench.torque.y",
           "enabled": true,
           "color": "#61cbff",
           "id": "8937f88b-e4a0-4cc1-ba4a-acfa079f08c8",
@@ -707,7 +1290,7 @@
         },
         {
           "timestampMethod": "receiveTime",
-          "value": "/nex10/force_torque_sensor_broadcaster/wrench_filtered.wrench.torque.z",
+          "value": "/nex10/wrench.wrench.torque.z",
           "enabled": true,
           "color": "#a395e2",
           "id": "c61ace23-94dd-4d86-b1ed-c142c5158f46",
@@ -767,33 +1350,6 @@
         }
       ]
     },
-    "Plot!2yoghdm": {
-      "paths": [
-        {
-          "timestampMethod": "receiveTime",
-          "value": "/nex10/controller_manager/introspection_data/full.statistics[:]{name==\"state_interface.nex10_joint_3/position\"}.value",
-          "enabled": true,
-          "color": "#4e98e2",
-          "id": "da707373-b596-4e50-a9e5-97e425639c79",
-          "label": "state"
-        },
-        {
-          "timestampMethod": "receiveTime",
-          "value": "/nex10/controller_manager/introspection_data/full.statistics[:]{name==\"command_interface.nex10_joint_3/position\"}.value",
-          "enabled": true,
-          "color": "#f5774d",
-          "id": "beee2492-4a01-4b32-8342-c0c1e26de7cc",
-          "label": "command"
-        }
-      ]
-    },
-    "RawMessages!2k5l7ql": {
-      "topicPath": "/ur20/controller_manager/introspection_data/full.statistics",
-      "defaultExpanded": true,
-      "expansion": {
-        "1": "c"
-      }
-    },
     "Image!i9vkxd": {
       "cameraState": {
         "distance": 20,
@@ -840,16 +1396,194 @@
       }
     },
     "TransformTree!2w2ihum": {},
+    "Image!1g67i9o": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 60,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "synchronize": false,
+      "imageMode": {
+        "imageTopic": "/gelsight_capture/image"
+      }
+    },
+    "Image!34ext1h": {
+      "cameraState": {
+        "distance": 20,
+        "perspective": true,
+        "phi": 60,
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "thetaOffset": 60,
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "synchronize": false,
+      "imageMode": {
+        "imageTopic": "/gelsight_vision_d555/color/image_raw",
+        "calibrationTopic": "/gelsight_vision_d555/color/camera_info"
+      }
+    },
+    "Plot!4bwqv3p": {
+      "paths": [
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/space_panda_controller/command_wrench.wrench.force.x",
+          "enabled": true,
+          "color": "#4e98e2",
+          "id": "07233b43-a1cb-4a48-b19e-899da010d74b",
+          "label": "x"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/space_panda_controller/command_wrench.wrench.force.y",
+          "enabled": true,
+          "color": "#f5774d",
+          "id": "ae6497fc-c479-44ac-927a-297d7b1e04f8",
+          "label": "y"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/space_panda_controller/command_wrench.wrench.force.z",
+          "enabled": true,
+          "color": "#f7df71",
+          "id": "e94b720c-e70a-4669-bd56-18b7f31f6e0c",
+          "label": "z"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/space_panda_controller/command_wrench.wrench.torque.x",
+          "enabled": true,
+          "color": "#5cd6a9",
+          "id": "fdad07b8-6409-40b8-8ff6-01f84acd4c7a",
+          "label": "ax"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/space_panda_controller/command_wrench.wrench.torque.y",
+          "enabled": true,
+          "color": "#61cbff",
+          "id": "c8822ef7-b6d2-4d4d-90f6-8b1d7a0b96ef",
+          "label": "ay"
+        },
+        {
+          "timestampMethod": "receiveTime",
+          "value": "/panda/space_panda_controller/command_wrench.wrench.torque.z",
+          "enabled": true,
+          "color": "#a395e2",
+          "id": "4e7c4ccc-66ff-445a-bdff-06f60fa79515",
+          "label": "az"
+        }
+      ]
+    },
+    "Indicator!3moda6c": {
+      "path": "/ur20/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.z",
+      "style": "background",
+      "fontSize": 36,
+      "fallbackColor": "#ff0000",
+      "fallbackLabel": "Danger",
+      "rules": [
+        {
+          "operator": ">",
+          "rawValue": "-30",
+          "color": "#68e24a",
+          "label": "Safe Zone"
+        }
+      ]
+    },
+    "Gauge!2djq78e": {
+      "path": "/ur20/force_torque_sensor_broadcaster/wrench_filtered.wrench.force.z",
+      "style": "bar",
+      "minValue": -50,
+      "maxValue": 3.7152,
+      "tickInterval": 0.1,
+      "showTicks": false,
+      "colorMap": "red-yellow-green",
+      "colorMode": "colormap",
+      "gradient": [
+        "#0000ff",
+        "#ff00ff"
+      ],
+      "reverse": false,
+      "reverseDirection": false
+    },
     "Tab!1app0q": {
-      "activeTabIdx": 0,
+      "activeTabIdx": 2,
       "tabs": [
         {
           "title": "3D",
           "layout": "3D!4eotes4"
         },
         {
-          "title": "ur20_force",
-          "layout": "Plot!267mjd7"
+          "title": "UR 20",
+          "layout": "Tab!3wdrl16"
+        },
+        {
+          "title": "Nex 10",
+          "layout": "Tab!3sqcyrk"
         },
         {
           "title": "nex10_force",
@@ -860,20 +1594,32 @@
           "layout": "Plot!3h9pesj"
         },
         {
-          "title": "error",
-          "layout": "Plot!2yoghdm"
-        },
-        {
-          "title": "controller debug",
-          "layout": "RawMessages!2k5l7ql"
-        },
-        {
           "title": "thermal",
           "layout": "Image!i9vkxd"
         },
         {
           "title": "transforms",
           "layout": "TransformTree!2w2ihum"
+        },
+        {
+          "title": "sensors",
+          "layout": {
+            "first": "Image!1g67i9o",
+            "second": "Image!34ext1h",
+            "direction": "row"
+          }
+        },
+        {
+          "title": "space_panda",
+          "layout": "Plot!4bwqv3p"
+        },
+        {
+          "title": "force indicator",
+          "layout": {
+            "first": "Indicator!3moda6c",
+            "second": "Gauge!2djq78e",
+            "direction": "row"
+          }
         }
       ]
     }
