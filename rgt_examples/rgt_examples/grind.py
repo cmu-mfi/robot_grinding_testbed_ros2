@@ -14,10 +14,12 @@ from rgt_interfaces.srv import OverrideToolLocation
 from robot_manager_interfaces.srv import Home
 from std_srvs.srv import Trigger
 
-class GrindUR20(Node):
+class Grind(Node):
     def __init__(self):
-        super().__init__('grind_ur20')
-        self.ns = "ur20/"
+        super().__init__('grind')
+        self.declare_parameter('ns', '')
+        self.robot = str(self.get_parameter("ns").value)
+        self.ns = str(self.get_parameter("ns").value) + "/"
 
         self.get_logger().info("[INIT] Connecting to ROS 2 services...")
 
@@ -90,7 +92,7 @@ class GrindUR20(Node):
         future = self.set_io_client.call_async(req)
         rclpy.spin_until_future_complete(self, future)
 
-    def move_to_pose(self, position, orientation, velocity_scaling=0.04, acceleration_scaling=0.01):
+    def move_to_pose(self, position, orientation, velocity_scaling=0.10, acceleration_scaling=0.02):
         goal_msg = PoseGoal.Goal()
         goal_msg.target_pose = Pose(
             position=Point(x=position[0], y=position[1], z=position[2]),
@@ -196,16 +198,16 @@ class GrindUR20(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    node = GrindUR20()
+    node = Grind()
 
     # Parameters
     node.frame_id = "world"
     node.target_id = "grinder_tooltip"
     node.start_position = [0.0, 0.0, 0.02]
-    node.end_position = [0.0, 0.15, 0.02]
+    node.end_position = [-0.15, 0.0, 0.02]
     node.grind_speed = 0.01  # m/s
     node.orientation = quaternion_from_euler(
-        math.radians(0), math.radians(20), math.radians(-90)
+        math.radians(0), math.radians(20), math.radians(0)
     )
     node.admittance_mass = 10.0
     node.admittance_damping = 6000.0
@@ -215,7 +217,7 @@ def main(args=None):
 
     try:
         node.get_logger().info("[1/8] Overriding tool location...")
-        node.override_tool("grinder", "ur20")
+        node.override_tool("grinder", node.robot)
         time.sleep(0.5)
 
         node.get_logger().info("[2/8] Homing robot...")
@@ -223,6 +225,10 @@ def main(args=None):
         time.sleep(0.5)
 
         node.get_logger().info("[3/8] Moving to start pose...")
+        node.start_position[2] = node.start_position[2] + 0.2
+        node.move_to_pose(node.start_position, node.orientation)
+        time.sleep(0.5)
+        node.start_position[2] = node.start_position[2] - 0.2
         node.move_to_pose(node.start_position, node.orientation)
         time.sleep(0.5)
 
@@ -252,6 +258,10 @@ def main(args=None):
 
         node.get_logger().info("[8/8] Powering OFF grinder & homing...")
         node.set_io(pin=1, state=0)
+        time.sleep(0.5)
+
+        node.end_position[2] = node.end_position[2] + 0.2
+        node.move_to_pose(node.end_position, node.orientation)
         time.sleep(0.5)
         node.home(0.1)
 
