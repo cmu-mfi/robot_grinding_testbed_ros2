@@ -22,6 +22,7 @@ setup(
             'find_tray_reference = rgt_scripts.find_tray_reference:main',
             'test_tray_reference = rgt_scripts.test_tray_reference:main',
             'find_world_reference = rgt_scripts.find_world_reference:main',
+            'test_world_reference = rgt_scripts.test_world_reference:main',
             'spacemouse = rgt_scripts.spacemouse:main'
         ],
     },
