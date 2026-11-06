@@ -5,6 +5,7 @@ from rclpy.action import ActionClient
 from action_msgs.msg import GoalStatus
 
 import threading
+import math
 
 from robot_manager_interfaces.action import JointGoal
 from robot_manager_interfaces.action import PoseGoal
@@ -54,12 +55,21 @@ def main(args=None):
     try:
         # home robot
         req = Home.Request()
-        req.speed = 0.3
+        req.speed = 0.05
         node.home_client.call(req)
+
+        # TOTAL HACK TO STOP UR FROM DOING CRAZY PATHPLANNING
+        if node.tc == "ur20_tray_8":
+            # Joint goal
+            joint_msg = JointGoal.Goal()
+            joint_msg.acceleration_scaling = 0.1
+            joint_msg.velocity_scaling = 0.1
+            joint_msg.positions = [-math.pi/2, -math.pi/2, math.pi/2, -math.pi/2, -math.pi/2, 0.0]
+            node.run_action(node.joint_goal_client, joint_msg)
 
         # move above reference
         goal_msg.method = "PTP"
-        goal_msg.velocity_scaling = 0.1
+        goal_msg.velocity_scaling = 0.05
         goal_msg.acceleration_scaling = 0.01
         goal_msg.target_pose.position = Point(x=0.0, y=0.0, z=0.1)
         node.run_action(node.pose_goal_client, goal_msg)
