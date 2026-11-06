@@ -22,10 +22,13 @@
   <xacro:tray name="nex10_tray_2" />
   <xacro:tray name="nex10_tray_3" />
   <xacro:tray name="nex10_tray_4" />
-  <xacro:tray name="ur20_tray_1" />
-  <xacro:tray name="ur20_tray_2" />
+  <xacro:tray name="nex10_tray_5" />
   <xacro:tray name="ur20_tray_3" />
   <xacro:tray name="ur20_tray_4" />
+  <xacro:tray name="ur20_tray_5" />
+  <xacro:tray name="ur20_tray_6" />
+  <xacro:tray name="ur20_tray_7" />
+  <xacro:tray name="ur20_tray_8" />
 
   <!-- Tools -->
   <xacro:sander />

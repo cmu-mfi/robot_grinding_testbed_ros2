@@ -59,13 +59,14 @@ def main(args=None):
 
         # move above reference
         goal_msg.method = "PTP"
-        goal_msg.velocity_scaling = 0.2
+        goal_msg.velocity_scaling = 0.1
+        goal_msg.acceleration_scaling = 0.01
         goal_msg.target_pose.position = Point(x=0.0, y=0.0, z=0.1)
         node.run_action(node.pose_goal_client, goal_msg)
 
         input("Proceed?")
         goal_msg.method = "LIN"
-        goal_msg.velocity_scaling = 0.05
+        goal_msg.velocity_scaling = 0.02
         goal_msg.target_pose.position = Point(x=0.0, y=0.0, z=0.006)
         node.run_action(node.pose_goal_client, goal_msg)
 
