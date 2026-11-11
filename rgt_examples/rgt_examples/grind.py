@@ -203,11 +203,11 @@ def main(args=None):
     # Parameters
     node.frame_id = "world"
     node.target_id = "grinder_tooltip"
-    node.start_position = [0.0, 0.0, 0.02]
-    node.end_position = [-0.15, 0.0, 0.02]
+    node.start_position = [0.26, -0.02, 0.02]
+    node.end_position   = [0.40, -0.02, 0.02]
     node.grind_speed = 0.01  # m/s
     node.orientation = quaternion_from_euler(
-        math.radians(0), math.radians(20), math.radians(0)
+        math.radians(0), math.radians(20), math.radians(180)
     )
     node.admittance_mass = 10.0
     node.admittance_damping = 6000.0
@@ -237,7 +237,7 @@ def main(args=None):
         time.sleep(0.5)
 
         node.get_logger().info("[5/8] Powering ON grinder...")
-        node.set_io(pin=1, state=1)
+        # node.set_io(pin=1, state=1)
         time.sleep(0.5)
 
         node.countdown_delay(6.0)
@@ -257,7 +257,7 @@ def main(args=None):
         time.sleep(0.5)
 
         node.get_logger().info("[8/8] Powering OFF grinder & homing...")
-        node.set_io(pin=1, state=0)
+        # node.set_io(pin=1, state=0)
         time.sleep(0.5)
 
         node.end_position[2] = node.end_position[2] + 0.2

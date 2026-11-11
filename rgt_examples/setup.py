@@ -21,7 +21,8 @@ setup(
         'console_scripts': [
             'tool_change_example = rgt_examples.tool_change_example:main',
             'move_till_force = rgt_examples.move_till_force:main',
-            'grind = rgt_examples.grind:main'
+            'grind = rgt_examples.grind:main',
+            'sand = rgt_examples.sand:main'
         ],
     },
 )
