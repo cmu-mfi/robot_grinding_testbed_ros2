@@ -201,8 +201,8 @@ tools:
     tray_name: tray_1
     child_transforms:
       sander_tooltip:
-        # z: -0.148005
-        z: -0.205
+        z: -0.148005 # Without Pressure Sensor
+        # z: -0.205 # With Pressure Sensor
   grinder:
     location: tray
     tray_name: tray_2
