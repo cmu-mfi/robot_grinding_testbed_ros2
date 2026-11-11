@@ -76,16 +76,16 @@ For the gripper to show up and be used a few changes have to be made.
 
 1. Clone the repository into your `ros2_ws/src` folder:
 ```sh
-https://github.com/alexmnr/robotiq_gripper_ros2.git
+https://github.com/cmu-mfi/robotiq_gripper_ros2.git
 ```
 
-2. Launch the gripper with real or fake hardware **before** the rgt_manager:
+2. Launch the gripper with real or fake hardware:
 ```bash
-ros2 launch robotiq_description bringup.launch.py ns:=gripper use_fake_hardware:=true
+ros2 launch robotiq_bringup bringup.launch.py ns:=gripper use_fake_hardware:=true
 ```
 or
 ```bash
-ros2 launch robotiq_description bringup.launch.py ns:=gripper use_fake_hardware:=false
+ros2 launch robotiq_bringup bringup.launch.py ns:=gripper use_fake_hardware:=false
 ```
 3. To see the visualisation in foxglove, you have to add a URDF visualisation for the topic `/gripper/robot_description`
 4. To control the gripper use the ros2 action interface like this:
