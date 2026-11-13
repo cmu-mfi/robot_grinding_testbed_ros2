@@ -7,6 +7,11 @@
           <mesh filename="package://rgt_manager/meshes/table.glb" scale="1 1 1" />
         </geometry>
       </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://rgt_manager/meshes/table_collision.glb" scale="1 1 1" />
+        </geometry>
+      </collision>
     </link>
     <joint name="${name}" type="fixed">
       <parent link="${parent}" />
